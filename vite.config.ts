@@ -16,6 +16,10 @@ function cloudflarePagesSpaPlugin() {
         if (fs.existsSync(indexPath)) {
           fs.copyFileSync(indexPath, spaFallbackPath);
         }
+        const workerInDist = path.join(distDir, '_worker.js');
+        if (fs.existsSync(workerInDist)) {
+          fs.unlinkSync(workerInDist);
+        }
       } catch {
         // fail-safe
       }
