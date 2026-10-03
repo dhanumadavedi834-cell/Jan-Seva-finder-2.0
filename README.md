@@ -81,14 +81,9 @@ npm run build
 
 ### 2. Single-Page Application (SPA) Fallback for Cloudflare Pages
 
-To ensure direct routes like `/services` or `/scholarships` rewrite to `index.html`, create a `_routes.json` or `_headers` / `_redirects` file:
+Cloudflare Pages natively supports Single-Page Applications (SPAs). Our build system automatically generates `dist/200.html` on `npm run build`, which Cloudflare Pages uses as its official 200 OK fallback for client-side routing.
 
-`public/_redirects`:
-```text
-/*    /index.html   200
-```
-
-This ensures full client-side routing on Cloudflare Pages without 404 errors on browser refresh.
+> **Note on `_redirects`**: Do **not** add `/* /index.html 200` to a `_redirects` file. Cloudflare's redirect parser detects that `/*` matches `/index.html` and flags it with `invalid redirects configuration: line 1: infinite loop detected in the rule`. Cloudflare Pages handles SPA routing automatically without requiring a `_redirects` file.
 
 ---
 
