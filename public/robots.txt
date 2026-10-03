@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jansevafinder.gov-info.in/sitemap.xml
+Sitemap: https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/sitemap.xml
+Sitemap: https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/sitemap.xml

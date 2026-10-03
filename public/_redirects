@@ -1,0 +1,21 @@
+# Cloudflare Pages Redirects configuration
+# Explicit rules to prevent infinite loop detections
+
+/sitemap.xml    /sitemap.xml    200
+/sitemap        /sitemap.xml    200
+/robots.txt     /robots.txt     200
+/index.html     /index.html     200
+
+# Client-side SPA routes
+/services/*     /index.html     200
+/schemes/*      /index.html     200
+/scholarships/* /index.html     200
+/jobs/*         /index.html     200
+/internships/*  /index.html     200
+/documents/*    /index.html     200
+/states/*       /index.html     200
+/about          /index.html     200
+/privacy        /index.html     200
+/terms          /index.html     200
+/disclaimer     /index.html     200
+/contact        /index.html     200
