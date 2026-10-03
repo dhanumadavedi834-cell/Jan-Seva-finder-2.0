@@ -1,0 +1,6 @@
+{
+  "name": "JanSeva Finder – Official Indian Public Services & Schemes Directory",
+  "description": "Discover verified government services, schemes, scholarships, internships, documents, and official portals across India. Clean, independent, no login required.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

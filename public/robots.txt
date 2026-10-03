@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jansevafinder.gov-info.in/sitemap.xml

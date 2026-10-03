@@ -1,0 +1,88 @@
+import { CategoryInfo } from '../types/service';
+
+export const CATEGORIES: CategoryInfo[] = [
+  {
+    id: 'services',
+    title: 'Government Services',
+    iconName: 'Building2',
+    shortDescription: 'National public portals, citizen service centers, and e-governance utilities.',
+    colorScheme: 'indigo',
+  },
+  {
+    id: 'schemes',
+    title: 'Government Schemes',
+    iconName: 'Coins',
+    shortDescription: 'Central and state welfare programs, direct benefit transfers, and subsidies.',
+    colorScheme: 'amber',
+  },
+  {
+    id: 'scholarships',
+    title: 'Scholarships',
+    iconName: 'GraduationCap',
+    shortDescription: 'Financial aid, pre & post-matric grants, and merit awards for students.',
+    colorScheme: 'blue',
+  },
+  {
+    id: 'jobs',
+    title: 'Government Jobs',
+    iconName: 'Briefcase',
+    shortDescription: 'Official recruitment portals, civil services, defence, railways, and public sector alerts.',
+    colorScheme: 'emerald',
+  },
+  {
+    id: 'internships',
+    title: 'Internships',
+    iconName: 'Rocket',
+    shortDescription: 'Government ministry internships, AICTE portals, and research fellowships.',
+    colorScheme: 'purple',
+  },
+  {
+    id: 'documents',
+    title: 'Documents & Certificates',
+    iconName: 'FileText',
+    shortDescription: 'Aadhaar, PAN, birth, caste, income, domicile certificates, and DigiLocker access.',
+    colorScheme: 'rose',
+  },
+  {
+    id: 'transport',
+    title: 'Transport Services',
+    iconName: 'Car',
+    shortDescription: 'Driving licences, vehicle registration, FASTag, and Parivahan citizen portals.',
+    colorScheme: 'cyan',
+  },
+  {
+    id: 'financial',
+    title: 'Financial Services',
+    iconName: 'Landmark',
+    shortDescription: 'Jan Dhan banking, pension schemes, EPFO PF balance, and income tax filing.',
+    colorScheme: 'teal',
+  },
+  {
+    id: 'health',
+    title: 'Health Services',
+    iconName: 'HeartPulse',
+    shortDescription: 'Ayushman Bharat PM-JAY health cards, ABHA digital IDs, and e-Sanjeevani.',
+    colorScheme: 'red',
+  },
+  {
+    id: 'education',
+    title: 'Education',
+    iconName: 'BookOpen',
+    shortDescription: 'SWAYAM courses, digital libraries, exam agencies, and education loan portals.',
+    colorScheme: 'violet',
+  },
+  {
+    id: 'skills',
+    title: 'Skill Development',
+    iconName: 'Wrench',
+    shortDescription: 'Skill India Digital, PMKVY certifications, apprenticeship schemes, and vocational training.',
+    colorScheme: 'orange',
+  },
+  {
+    id: 'state-services',
+    title: 'State Services',
+    iconName: 'Globe',
+    shortDescription: 'State-specific citizen e-District portals, land records, and local public services.',
+    colorScheme: 'sky',
+  },
+];
