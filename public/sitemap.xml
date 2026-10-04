@@ -1,310 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Sections -->
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/services</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/schemes</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/schemes</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/scholarships</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/scholarships</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/jobs</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/jobs</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/internships</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/internships</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/documents</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/documents</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Key Official Portals & Services -->
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/national-scholarship-portal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/states</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/digilocker</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/about</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/uidai-myaadhaar</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/privacy</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/national-career-service</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/terms</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/myscheme-portal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/disclaimer</loc>
   </url>
   <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/umang-portal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/aicte-internship-portal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/skill-india-digital</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/parivahan-sewa</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/income-tax-pan</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/passport-seva</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/pm-kisan-portal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/ayushman-bharat-pmjay</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/epfo-member-portal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/ssc-portal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/upsc-online</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/rrb-railway-recruitment</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/swayam-education</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/vidya-lakshmi-portal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/pm-vishwakarma</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/voter-portal-eci</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/atal-pension-yojana</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/pm-awas-yojana</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/crs-birth-death-certificates</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/pm-mudra-yojana</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/services/abha-digital-health-id</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Key State Portals -->
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/telangana</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/andhra-pradesh</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/maharashtra</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/delhi</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/uttar-pradesh</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/karnataka</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/tamil-nadu</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/rajasthan</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/gujarat</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/bihar</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/states/west-bengal</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Legal & Transparency Pages -->
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/about</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/privacy</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/disclaimer</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/terms</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.worker.dev/contact</loc>
-    <lastmod>2026-10-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev/contact</loc>
   </url>
 </urlset>
