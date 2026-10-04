@@ -114,7 +114,7 @@ export default {
     }
 
     // 3. Explicitly serve /sw.js with 200 OK and application/javascript
-    if (url.pathname === '/sw.js') {
+    if (url.pathname === '/sw.js' || url.pathname === '/sw.js/') {
       if (request.method === 'HEAD') {
         return new Response(null, {
           status: 200,
