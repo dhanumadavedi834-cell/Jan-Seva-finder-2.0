@@ -105,7 +105,30 @@ export default {
       });
     }
 
-    // 3. Delegate to Cloudflare static assets binding (env.ASSETS)
+    // 3. Explicitly serve /sw.js with 200 OK and application/javascript
+    if (url.pathname === '/sw.js') {
+      if (env && env.ASSETS) {
+        try {
+          const response = await env.ASSETS.fetch(request);
+          if (response.status === 200 || response.status === 304) {
+            const body = await response.text();
+            return new Response(body, {
+              status: 200,
+              headers: {
+                'Content-Type': 'application/javascript; charset=utf-8',
+                'Service-Worker-Allowed': '/',
+                'Cache-Control': 'public, max-age=0, must-revalidate',
+                'Access-Control-Allow-Origin': '*',
+              },
+            });
+          }
+        } catch {
+          // Fallback below
+        }
+      }
+    }
+
+    // 4. Delegate to Cloudflare static assets binding (env.ASSETS)
     if (env && env.ASSETS) {
       try {
         const response = await env.ASSETS.fetch(request);
