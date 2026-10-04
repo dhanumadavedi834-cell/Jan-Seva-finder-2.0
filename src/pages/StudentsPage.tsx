@@ -17,7 +17,6 @@ import {
 import { SERVICES } from '../data/services';
 import { ServiceCard } from '../components/ServiceCard';
 import { Service } from '../types/service';
-import { AdPlaceholder } from '../components/AdPlaceholder';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { OfficialButton } from '../components/OfficialButton';
 import { trackEvent } from '../utils/analytics';
@@ -268,8 +267,6 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({
           </div>
         ))}
       </div>
-
-      <AdPlaceholder position="in-content" />
 
       {/* Directory Cards for Student Services */}
       <div className="space-y-4">

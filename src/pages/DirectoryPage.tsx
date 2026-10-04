@@ -4,7 +4,6 @@ import { ServiceCard } from '../components/ServiceCard';
 import { ServiceGrid } from '../components/ServiceGrid';
 import { SearchBar } from '../components/SearchBar';
 import { FilterBar } from '../components/FilterBar';
-import { AdPlaceholder } from '../components/AdPlaceholder';
 import { Service } from '../types/service';
 import { trackEvent } from '../utils/analytics';
 
@@ -163,9 +162,6 @@ export const DirectoryPage: React.FC<DirectoryPageProps> = ({
           emptyDescription={`We couldn't find any official listings matching "${query}" with your active filters. Try searching for "Aadhaar", "scholarship", or reset your filters.`}
         />
       </div>
-
-      {/* In-content Advertisement Placement */}
-      <AdPlaceholder position="in-content" />
     </div>
   );
 };

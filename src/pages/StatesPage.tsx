@@ -16,7 +16,6 @@ import { STATES_AND_UTS } from '../data/statesData';
 import { SERVICES } from '../data/services';
 import { Service } from '../types/service';
 import { trackEvent } from '../utils/analytics';
-import { AdPlaceholder } from '../components/AdPlaceholder';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { OfficialButton } from '../components/OfficialButton';
 import { ServiceCard } from '../components/ServiceCard';
@@ -167,8 +166,6 @@ export const StatesPage: React.FC<StatesPageProps> = ({
             </div>
           </div>
         </div>
-
-        <AdPlaceholder position="in-content" />
 
         {/* Relevant Public Resources for this state */}
         <div className="space-y-4">
@@ -335,8 +332,6 @@ export const StatesPage: React.FC<StatesPageProps> = ({
           </button>
         </div>
       )}
-
-      <AdPlaceholder position="footer" />
     </div>
   );
 };

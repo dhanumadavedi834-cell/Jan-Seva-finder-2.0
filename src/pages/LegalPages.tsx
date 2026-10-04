@@ -10,7 +10,6 @@ import {
   Globe,
   HeartHandshake,
 } from 'lucide-react';
-import { AdBanner } from '../components/AdBanner';
 
 interface LegalPageProps {
   pageType: 'about' | 'privacy' | 'terms' | 'disclaimer' | 'contact';
@@ -61,7 +60,6 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
           </ul>
         </div>
 
-        <AdBanner slot="footer" />
       </div>
     );
   }
@@ -114,7 +112,6 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
           </p>
         </div>
 
-        <AdBanner slot="footer" />
       </div>
     );
   }
@@ -161,7 +158,6 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
           </p>
         </div>
 
-        <AdBanner slot="footer" />
       </div>
     );
   }
@@ -193,7 +189,6 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
           </p>
         </div>
 
-        <AdBanner slot="footer" />
       </div>
     );
   }
@@ -299,8 +294,6 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
           </button>
         </form>
       )}
-
-      <AdBanner slot="footer" />
     </div>
   );
 };

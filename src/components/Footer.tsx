@@ -1,6 +1,5 @@
 import React from 'react';
 import { ExternalLink, ShieldCheck, HeartHandshake, FileCheck, HelpCircle } from 'lucide-react';
-import { AdBanner } from './AdBanner';
 
 interface Props {
   onNavigate: (path: string) => void;
@@ -28,9 +27,6 @@ export const Footer: React.FC<Props> = ({ onNavigate }) => {
   return (
     <footer className="bg-slate-900 text-slate-300 border-t border-slate-800 pt-12 pb-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-10">
-        {/* Optional Footer Ad Placement Slot */}
-        <AdBanner slot="footer" className="max-w-4xl mx-auto" />
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Col 1 & 2: Brand & Mission */}
           <div className="lg:col-span-2 space-y-4">

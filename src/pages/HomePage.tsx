@@ -12,7 +12,6 @@ import { SERVICES } from '../data/services';
 import { STATES_AND_UTS } from '../data/statesData';
 import { ServiceCard } from '../components/ServiceCard';
 import { Service } from '../types/service';
-import { AdPlaceholder } from '../components/AdPlaceholder';
 import { SearchBar } from '../components/SearchBar';
 import { CategoryCard } from '../components/CategoryCard';
 import { trackEvent } from '../utils/analytics';
@@ -60,11 +59,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectService 
 
   return (
     <div className="space-y-16 pb-16">
-      {/* Header Ad Placeholder */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4">
-        <AdPlaceholder position="header" />
-      </div>
-
       {/* Hero Section */}
       <section className="relative pt-6 sm:pt-12 px-4 sm:px-6 text-center max-w-4xl mx-auto">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 rounded-md border border-indigo-100 dark:border-indigo-900/60 mb-5">
@@ -259,11 +253,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectService 
           ))}
         </div>
       </section>
-
-      {/* In-Content Ad Placeholder */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <AdPlaceholder position="in-content" />
-      </div>
 
       {/* Recruitment Warning */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">

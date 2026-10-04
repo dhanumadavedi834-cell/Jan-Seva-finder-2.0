@@ -16,7 +16,6 @@ import { VERIFIED_SERVICES } from '../data/servicesData';
 import { ServiceCard } from '../components/ServiceCard';
 import { ServiceItem } from '../types/service';
 import { trackEvent } from '../utils/analytics';
-import { AdBanner } from '../components/AdBanner';
 
 interface Props {
   onSelectService: (service: ServiceItem) => void;
@@ -197,9 +196,6 @@ export const DocumentsPage: React.FC<Props> = ({ onSelectService, onNavigate }) 
           ))}
         </div>
       </div>
-
-      {/* Ad Placement */}
-      <AdBanner slot="in-content" />
 
       {/* All Document Services in Directory */}
       <div className="space-y-4">

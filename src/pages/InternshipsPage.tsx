@@ -15,7 +15,6 @@ import { Service } from '../types/service';
 import { SERVICES } from '../data/services';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { OfficialButton } from '../components/OfficialButton';
-import { AdPlaceholder } from '../components/AdPlaceholder';
 
 interface InternshipsPageProps {
   onSelectService: (service: Service) => void;
@@ -217,8 +216,6 @@ export const InternshipsPage: React.FC<InternshipsPageProps> = ({
           );
         })}
       </div>
-
-      <AdPlaceholder position="in-content" />
     </div>
   );
 };

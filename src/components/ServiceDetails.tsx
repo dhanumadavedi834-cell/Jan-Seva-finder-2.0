@@ -20,7 +20,6 @@ import { Service } from '../types/service';
 import { SERVICES } from '../data/services';
 import { Breadcrumbs } from './Breadcrumbs';
 import { OfficialButton } from './OfficialButton';
-import { AdPlaceholder } from './AdPlaceholder';
 
 interface ServiceDetailsProps {
   service: Service;
@@ -273,9 +272,6 @@ export const ServiceDetails: React.FC<ServiceDetailsProps> = ({
           </div>
         </section>
       )}
-
-      {/* Ad Placeholder */}
-      <AdPlaceholder position="in-content" />
 
       {/* Security & Anti-Fraud Advisory */}
       <div className="bg-amber-500/10 border border-amber-500/25 rounded-xl p-5 text-xs text-slate-800 dark:text-slate-200 space-y-2">

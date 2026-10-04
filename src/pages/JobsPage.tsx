@@ -16,7 +16,6 @@ import { VERIFIED_SERVICES } from '../data/servicesData';
 import { ServiceCard } from '../components/ServiceCard';
 import { ServiceItem } from '../types/service';
 import { trackEvent } from '../utils/analytics';
-import { AdBanner } from '../components/AdBanner';
 
 interface Props {
   onSelectService: (service: ServiceItem) => void;
@@ -167,9 +166,6 @@ export const JobsPage: React.FC<Props> = ({ onSelectService }) => {
           ))}
         </div>
       </div>
-
-      {/* Ad Placement Banner */}
-      <AdBanner slot="in-content" />
 
       {/* All Employment Services in Directory */}
       <div className="space-y-4">
