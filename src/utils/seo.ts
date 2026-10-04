@@ -33,11 +33,24 @@ export function updatePageSEO({ title, description, canonicalPath }: SEOProps) {
   const twitterDesc = document.querySelector('meta[name="twitter:description"]');
   if (twitterDesc) twitterDesc.setAttribute('content', finalDesc);
 
-  // Canonical
+  // Canonical & Social URLs (Always use verified production hostname)
+  const PRODUCTION_ORIGIN = 'https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev';
+  const cleanPath = (canonicalPath || window.location.pathname || '/').replace(/^#/, '');
+  const normalizedPath = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
+  const absoluteUrl = `${PRODUCTION_ORIGIN}${normalizedPath === '/' ? '/' : normalizedPath}`;
+
   const canonicalEl = document.querySelector('link[rel="canonical"]');
   if (canonicalEl) {
-    const origin = window.location.origin;
-    const path = canonicalPath || window.location.pathname + window.location.hash;
-    canonicalEl.setAttribute('href', `${origin}${path}`);
+    canonicalEl.setAttribute('href', absoluteUrl);
+  }
+
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) {
+    ogUrl.setAttribute('content', absoluteUrl);
+  }
+
+  const twitterUrl = document.querySelector('meta[name="twitter:url"]');
+  if (twitterUrl) {
+    twitterUrl.setAttribute('content', absoluteUrl);
   }
 }
