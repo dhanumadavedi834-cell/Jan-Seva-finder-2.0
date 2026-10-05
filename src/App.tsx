@@ -108,7 +108,7 @@ export default function App() {
           setSelectedService(match);
           trackEvent('service_open', { target: match.name });
           updatePageSEO({
-            title: `${match.name} - Application & Official Portal - JanSeva Finder`,
+            title: `${match.name} - Application & Official Portal - SevaKhoj India`,
             description: match.shortDescription || match.description,
             canonicalPath: `/services/${match.id}`,
             breadcrumbs: [
@@ -133,7 +133,7 @@ export default function App() {
         );
         const stateName = stateObj ? stateObj.name : stateSlug;
         updatePageSEO({
-          title: `${stateName} Citizen Services & Portals - JanSeva Finder`,
+          title: `${stateName} Citizen Services & Portals - SevaKhoj India`,
           description: `Access official citizen services, e-District portals, certificates, and welfare applications for ${stateName}.`,
           canonicalPath: `/states/${stateSlug}`,
           breadcrumbs: [
@@ -148,7 +148,7 @@ export default function App() {
       switch (path) {
         case '/services':
           updatePageSEO({
-            title: 'Government Services - JanSeva Finder',
+            title: 'Government Services - SevaKhoj India',
             description: 'Explore verified central and state public services across India. Direct links to official government portals with requirements and fee details.',
             canonicalPath: '/services',
             breadcrumbs: [{ name: 'Government Services', path: '/services' }],
@@ -157,7 +157,7 @@ export default function App() {
 
         case '/schemes':
           updatePageSEO({
-            title: 'Government Schemes - JanSeva Finder',
+            title: 'Government Schemes - SevaKhoj India',
             description: 'Directory of verified Central and State Government welfare schemes across agriculture, health, housing, financial inclusion, and citizen welfare.',
             canonicalPath: '/schemes',
             breadcrumbs: [{ name: 'Government Schemes', path: '/schemes' }],
@@ -166,7 +166,7 @@ export default function App() {
 
         case '/scholarships':
           updatePageSEO({
-            title: 'Government Scholarships - JanSeva Finder',
+            title: 'Government Scholarships - SevaKhoj India',
             description: 'Discover verified national and state scholarships, higher education grants, and DBT student aid across India for Academic Year 2026-27.',
             canonicalPath: '/scholarships',
             breadcrumbs: [{ name: 'Government Scholarships', path: '/scholarships' }],
@@ -175,7 +175,7 @@ export default function App() {
 
         case '/jobs':
           updatePageSEO({
-            title: 'Government Jobs - JanSeva Finder',
+            title: 'Government Jobs - SevaKhoj India',
             description: 'Directory of verified central and state government recruitment portals including NCS, SSC, UPSC, and Railways RRB. No fees or intermediaries.',
             canonicalPath: '/jobs',
             breadcrumbs: [{ name: 'Government Jobs', path: '/jobs' }],
@@ -184,7 +184,7 @@ export default function App() {
 
         case '/internships':
           updatePageSEO({
-            title: 'Government Internships - JanSeva Finder',
+            title: 'Government Internships - SevaKhoj India',
             description: 'Verified public sector internships and fellowships across Central Ministries, NITI Aayog, AICTE, and municipal bodies with official application details.',
             canonicalPath: '/internships',
             breadcrumbs: [{ name: 'Government Internships', path: '/internships' }],
@@ -193,7 +193,7 @@ export default function App() {
 
         case '/documents':
           updatePageSEO({
-            title: 'Government Documents & Certificates - JanSeva Finder',
+            title: 'Government Documents & Certificates - SevaKhoj India',
             description: 'Access official portals for DigiLocker, Aadhaar updates, instant e-PAN, driving licences, passports, and civil registration certificates.',
             canonicalPath: '/documents',
             breadcrumbs: [{ name: 'Government Documents', path: '/documents' }],
@@ -202,7 +202,7 @@ export default function App() {
 
         case '/states':
           updatePageSEO({
-            title: 'State Citizen Services & e-District Portals - JanSeva Finder',
+            title: 'State Citizen Services & e-District Portals - SevaKhoj India',
             description: 'Comprehensive directory of 36 State and Union Territory official citizen service portals, MeeSeva, Seva Sindhu, RTPS, and e-District systems.',
             canonicalPath: '/states',
             breadcrumbs: [{ name: 'State Services', path: '/states' }],
@@ -211,8 +211,8 @@ export default function App() {
 
         case '/about':
           updatePageSEO({
-            title: 'About JanSeva Finder - Independent Civic Directory',
-            description: 'Learn about the mission, verification standards, and editorial integrity of JanSeva Finder, an independent citizen resource directory.',
+            title: 'About SevaKhoj India - Independent Civic Directory',
+            description: 'Learn about the mission, verification standards, and editorial integrity of SevaKhoj India, an independent citizen resource directory.',
             canonicalPath: '/about',
             breadcrumbs: [{ name: 'About', path: '/about' }],
           });
@@ -220,8 +220,8 @@ export default function App() {
 
         case '/privacy':
           updatePageSEO({
-            title: 'Privacy Policy - JanSeva Finder',
-            description: 'Read JanSeva Finder privacy commitment: no user accounts, no login required, and zero collection of personal or financial credentials.',
+            title: 'Privacy Policy - SevaKhoj India',
+            description: 'Read SevaKhoj India privacy commitment: no user accounts, no login required, and zero collection of personal or financial credentials.',
             canonicalPath: '/privacy',
             breadcrumbs: [{ name: 'Privacy Policy', path: '/privacy' }],
           });
@@ -229,8 +229,8 @@ export default function App() {
 
         case '/terms':
           updatePageSEO({
-            title: 'Terms of Use - JanSeva Finder',
-            description: 'Terms of use and public directory policies for JanSeva Finder, an independent civic information index.',
+            title: 'Terms of Use - SevaKhoj India',
+            description: 'Terms of use and public directory policies for SevaKhoj India, an independent civic information index.',
             canonicalPath: '/terms',
             breadcrumbs: [{ name: 'Terms of Use', path: '/terms' }],
           });
@@ -238,8 +238,8 @@ export default function App() {
 
         case '/disclaimer':
           updatePageSEO({
-            title: 'Disclaimer & Official Non-Affiliation - JanSeva Finder',
-            description: 'Important legal disclosure: JanSeva Finder is an independent directory and is not affiliated with, operated by, or endorsed by the Government of India.',
+            title: 'Disclaimer & Official Non-Affiliation - SevaKhoj India',
+            description: 'Important legal disclosure: SevaKhoj India is an independent directory and is not affiliated with, operated by, or endorsed by the Government of India.',
             canonicalPath: '/disclaimer',
             breadcrumbs: [{ name: 'Disclaimer', path: '/disclaimer' }],
           });
@@ -247,8 +247,8 @@ export default function App() {
 
         case '/contact':
           updatePageSEO({
-            title: 'Contact & Feedback - JanSeva Finder',
-            description: 'Contact JanSeva Finder to report broken official links, suggest verified government portals, or share citizen feedback.',
+            title: 'Contact & Feedback - SevaKhoj India',
+            description: 'Contact SevaKhoj India to report broken official links, suggest verified government portals, or share citizen feedback.',
             canonicalPath: '/contact',
             breadcrumbs: [{ name: 'Contact', path: '/contact' }],
           });
@@ -256,7 +256,7 @@ export default function App() {
 
         case '/analytics':
           updatePageSEO({
-            title: 'Directory Insights - JanSeva Finder',
+            title: 'Directory Insights - SevaKhoj India',
             description: 'Anonymous telemetry and directory health stats.',
             canonicalPath: '/analytics',
           });
@@ -265,16 +265,16 @@ export default function App() {
         case '/':
         case '':
           updatePageSEO({
-            title: 'JanSeva Finder - Government Services, Schemes, Scholarships & Jobs',
-            description: 'Search verified Indian government schemes, scholarships, civil recruitment, digital documents, and citizen services from one independent discovery directory.',
+            title: 'SevaKhoj India - Government Services, Schemes, Scholarships, Jobs & More',
+            description: 'SevaKhoj India helps people find Indian government services, schemes, scholarships, jobs, internships, documents and state services in one place.',
             canonicalPath: '/',
           });
           break;
 
         default:
           updatePageSEO({
-            title: 'Page Not Found - JanSeva Finder',
-            description: 'The requested page could not be found on JanSeva Finder.',
+            title: 'Page Not Found - SevaKhoj India',
+            description: 'The requested page could not be found on SevaKhoj India.',
             canonicalPath: path,
           });
           break;

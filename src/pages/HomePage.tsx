@@ -164,11 +164,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectService 
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-display">
-              How JanSeva Finder Works
+              How SevaKhoj India Works
             </h2>
             <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
               A simple discovery layer bridging citizens to genuine government portals.
-              JanSeva Finder does not collect sensitive credentials or process government applications itself.
+              SevaKhoj India does not collect sensitive credentials or process government applications itself.
             </p>
           </div>
 

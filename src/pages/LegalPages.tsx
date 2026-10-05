@@ -35,7 +35,7 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 space-y-8">
         <div className="border-b border-slate-200 dark:border-slate-800 pb-6">
           <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white font-display">
-            About JanSeva Finder
+            About SevaKhoj India
           </h1>
           <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
             An independent civic discovery directory created for citizens of India to find authoritative public resources and schemes easily.
@@ -48,7 +48,7 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
             India possesses one of the world's most advanced digital public infrastructures, spanning DigiLocker, the National Scholarship Portal, UPI, myAadhaar, and thousands of central and state e-governance services. However, everyday citizens often struggle to distinguish official government portals from unauthorized third-party imitators or phishing sites.
           </p>
           <p>
-            <strong>JanSeva Finder</strong> was built to solve this challenge by providing one clean, trustworthy, and non-commercial discovery directory. We organize official public services into simple plain-language guides, checklists of required documents, and direct links to the genuine government domains ending in <code>.gov.in</code> or <code>.nic.in</code>.
+            <strong>SevaKhoj India</strong> was built to solve this challenge by providing one clean, trustworthy, and non-commercial discovery directory. We organize official public services into simple plain-language guides, checklists of required documents, and direct links to the genuine government domains ending in <code>.gov.in</code> or <code>.nic.in</code>.
           </p>
 
           <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-4">Strict Editorial Principles</h2>
@@ -78,12 +78,12 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
 
         <div className="prose prose-slate dark:prose-invert max-w-none text-sm space-y-5 text-slate-700 dark:text-slate-300 leading-relaxed">
           <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 text-emerald-950 dark:text-emerald-200">
-            <strong>Privacy Guarantee:</strong> JanSeva Finder does NOT require you to create an account, log in, or provide sensitive personally identifiable information (PII).
+            <strong>Privacy Guarantee:</strong> SevaKhoj India does NOT require you to create an account, log in, or provide sensitive personally identifiable information (PII).
           </div>
 
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">1. Information We Do NOT Collect</h2>
           <p>
-            Unlike many commercial platforms, JanSeva Finder is intentionally architected to minimize data footprint:
+            Unlike many commercial platforms, SevaKhoj India is intentionally architected to minimize data footprint:
           </p>
           <ul className="list-disc pl-5 space-y-1">
             <li>We do NOT collect or store <strong>Aadhaar numbers</strong> or <strong>Virtual IDs (VID)</strong>.</li>
@@ -108,7 +108,7 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
 
           <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-4">3. External Government Links</h2>
           <p>
-            When you click "Visit Official Website", you leave JanSeva Finder and enter the external official portal operated by the respective Government ministry or department. The privacy practices and terms of that government website govern your interaction on their platform.
+            When you click "Visit Official Website", you leave SevaKhoj India and enter the external official portal operated by the respective Government ministry or department. The privacy practices and terms of that government website govern your interaction on their platform.
           </p>
         </div>
 
@@ -134,14 +134,14 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
             <span>Statutory Non-Government Disclosure</span>
           </div>
           <p className="text-sm font-medium leading-relaxed text-slate-800 dark:text-slate-200">
-            JanSeva Finder is an independent information platform and is not affiliated with, operated by, or endorsed by the Government of India or any government department. Information may change. Always verify eligibility, fees, deadlines and requirements on the official website before taking action.
+            SevaKhoj India is an independent information platform and is not affiliated with, operated by, or endorsed by the Government of India or any government department. Information may change. Always verify eligibility, fees, deadlines and requirements on the official website before taking action.
           </p>
         </div>
 
         <div className="prose prose-slate dark:prose-invert max-w-none text-sm space-y-5 text-slate-700 dark:text-slate-300 leading-relaxed">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">1. Nature of the Service</h2>
           <p>
-            JanSeva Finder operates solely as a public indexing and information discovery directory. We do not act as government agents, representatives, intermediaries, or processing entities. We do not issue statutory certificates, process welfare scheme disbursements, register land records, or schedule passport appointments directly.
+            SevaKhoj India operates solely as a public indexing and information discovery directory. We do not act as government agents, representatives, intermediaries, or processing entities. We do not issue statutory certificates, process welfare scheme disbursements, register land records, or schedule passport appointments directly.
           </p>
 
           <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-4">2. Accuracy of Information</h2>
@@ -175,17 +175,17 @@ export const LegalPages: React.FC<LegalPageProps> = ({ pageType }) => {
         <div className="prose prose-slate dark:prose-invert max-w-none text-sm space-y-5 text-slate-700 dark:text-slate-300 leading-relaxed">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">1. Acceptance of Terms</h2>
           <p>
-            By accessing and utilizing JanSeva Finder, you agree to be bound by these Terms of Use. If you do not agree with these terms, please discontinue use of this directory.
+            By accessing and utilizing SevaKhoj India, you agree to be bound by these Terms of Use. If you do not agree with these terms, please discontinue use of this directory.
           </p>
 
           <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-4">2. Permitted Use</h2>
           <p>
-            JanSeva Finder is provided free of charge for personal, non-commercial public discovery purposes. You may use our search utilities, read eligibility guidelines, and follow verified official links to complete government applications.
+            SevaKhoj India is provided free of charge for personal, non-commercial public discovery purposes. You may use our search utilities, read eligibility guidelines, and follow verified official links to complete government applications.
           </p>
 
           <h2 className="text-lg font-bold text-slate-900 dark:text-white pt-4">3. Limitation of Liability</h2>
           <p>
-            In no event shall JanSeva Finder, its creators, or contributors be held liable for any decisions made, rejections incurred, fees paid to official portals, or discrepancies arising from changes made to government schemes by respective departments.
+            In no event shall SevaKhoj India, its creators, or contributors be held liable for any decisions made, rejections incurred, fees paid to official portals, or discrepancies arising from changes made to government schemes by respective departments.
           </p>
         </div>
 

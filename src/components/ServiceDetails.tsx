@@ -285,7 +285,7 @@ export const ServiceDetails: React.FC<ServiceDetailsProps> = ({
         </div>
         <p className="leading-relaxed text-slate-700 dark:text-slate-300">
           Never share confidential OTPs, passwords, Aadhaar numbers, or bank PINs on third-party websites or with agents.
-          JanSeva Finder does not ask for or store sensitive credentials.
+          SevaKhoj India does not ask for or store sensitive credentials.
           Always confirm URL ends with <strong className="font-mono text-slate-900 dark:text-white">.gov.in</strong> or <strong className="font-mono text-slate-900 dark:text-white">.nic.in</strong> before entering personal details.
         </p>
       </div>

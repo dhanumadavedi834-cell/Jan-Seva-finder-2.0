@@ -8,7 +8,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" wid
       .cls-blue-stroke { stroke: #0c4d87; fill: none; }
       .cls-orange { fill: #f26522; }
       .cls-green { fill: #008837; }
-      .text-title { font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: 800; font-size: 135px; text-anchor: middle; }
+      .text-title { font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: 800; font-size: 130px; text-anchor: middle; }
       .text-sub { font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: 800; font-size: 110px; text-anchor: middle; }
       .text-tagline { font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: 500; font-size: 36px; fill: #333f48; text-anchor: middle; }
     </style>
@@ -74,19 +74,18 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" wid
     </g>
   </g>
 
-  <!-- Typography -->
-  <!-- "JanSeva" in Rich Blue -->
-  <text x="512" y="668" fill="#0c4d87" class="text-title" letter-spacing="-1.5px">JanSeva</text>
+  <!-- Typography: SevaKhoj -->
+  <text x="512" y="668" fill="#0c4d87" class="text-title" letter-spacing="-1.5px">SevaKhoj</text>
 
-  <!-- "— Finder —" -->
+  <!-- "— India —" -->
   <!-- Left Orange Dash -->
-  <line x1="168" y1="740" x2="276" y2="740" stroke="#f26522" stroke-width="14" stroke-linecap="round" />
+  <line x1="188" y1="740" x2="296" y2="740" stroke="#f26522" stroke-width="14" stroke-linecap="round" />
   
-  <!-- "Finder" in Emerald Green -->
-  <text x="512" y="774" fill="#008837" class="text-sub" letter-spacing="-1px">Finder</text>
+  <!-- "India" in Emerald Green -->
+  <text x="512" y="774" fill="#008837" class="text-sub" letter-spacing="-1px">India</text>
 
   <!-- Right Green Dash -->
-  <line x1="748" y1="740" x2="856" y2="740" stroke="#008837" stroke-width="14" stroke-linecap="round" />
+  <line x1="728" y1="740" x2="836" y2="740" stroke="#008837" stroke-width="14" stroke-linecap="round" />
 
   <!-- Subtitle Text -->
   <text x="512" y="865" class="text-tagline">Find Government Services, Schemes,</text>
@@ -94,8 +93,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" wid
 </svg>`;
 
 fs.writeFileSync('./public/janseva-logo.svg', svg.trim(), 'utf8');
-console.log('Saved ./public/janseva-logo.svg');
+console.log('Saved ./public/janseva-logo.svg with SevaKhoj India');
 
 // Render ./public/janseva-logo.png via rsvg-convert at high resolution 1024x1024
 execSync('rsvg-convert -w 1024 -h 1024 ./public/janseva-logo.svg -o ./public/janseva-logo.png');
-console.log('Generated ./public/janseva-logo.png (1024x1024)');
+console.log('Generated ./public/janseva-logo.png (1024x1024) with SevaKhoj India');

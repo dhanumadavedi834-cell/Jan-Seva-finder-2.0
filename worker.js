@@ -268,7 +268,7 @@ export default {
     }
 
     // 4. Fallback for environments without ASSETS binding
-    return new Response('JanSeva Finder', {
+    return new Response('SevaKhoj India', {
       status: 200,
       headers: { 'Content-Type': 'text/html; charset=utf-8' },
     });

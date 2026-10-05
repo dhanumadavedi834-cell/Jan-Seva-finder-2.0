@@ -58,11 +58,11 @@ export const Header: React.FC<HeaderProps> = ({
             handleLinkClick('/');
           }}
           className="flex items-center gap-2.5 sm:gap-3 group shrink-0 focus-visible:outline-2 focus-visible:outline-indigo-600 rounded"
-          aria-label="JanSeva Finder - Back to homepage"
+          aria-label="SevaKhoj India - Back to homepage"
         >
           <img
             src="/janseva-logo.png"
-            alt="JanSeva Finder logo"
+            alt="SevaKhoj India logo"
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg object-contain shrink-0 shadow-sm border border-slate-100 dark:border-slate-800 bg-white"
             width={40}
             height={40}
@@ -70,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({
             decoding="async"
           />
           <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white font-display flex items-center">
-            JanSeva<span className="text-indigo-600 dark:text-indigo-400">Finder</span>
+            SevaKhoj<span className="text-indigo-600 dark:text-indigo-400 ml-1">India</span>
           </span>
         </a>
 

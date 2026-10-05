@@ -11,15 +11,15 @@ export interface SEOProps {
 }
 
 export const PRODUCTION_ORIGIN = 'https://jan-seva-finder-2-0.bharat-internship-portal.workers.dev';
-const DEFAULT_TITLE = 'JanSeva Finder - Government Services, Schemes, Scholarships & Jobs';
-const DEFAULT_DESC = 'Search verified Indian government schemes, scholarships, civil recruitment, digital documents, and citizen services from one independent discovery directory.';
+const DEFAULT_TITLE = 'SevaKhoj India - Government Services, Schemes, Scholarships, Jobs & More';
+const DEFAULT_DESC = 'SevaKhoj India helps people find Indian government services, schemes, scholarships, jobs, internships, documents and state services in one place.';
 
 export function updatePageSEO({ title, description, canonicalPath, breadcrumbs }: SEOProps) {
-  // Format Title: if title is provided and already contains 'JanSeva Finder', use it directly;
-  // otherwise suffix with ' - JanSeva Finder'
+  // Format Title: if title is provided and already contains 'SevaKhoj India', use it directly;
+  // otherwise suffix with ' - SevaKhoj India'
   let finalTitle = DEFAULT_TITLE;
   if (title) {
-    finalTitle = title.includes('JanSeva Finder') ? title : `${title} - JanSeva Finder`;
+    finalTitle = title.includes('SevaKhoj India') ? title : `${title} - SevaKhoj India`;
   }
   const finalDesc = description || DEFAULT_DESC;
 

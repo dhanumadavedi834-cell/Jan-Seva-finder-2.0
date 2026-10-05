@@ -1,15 +1,15 @@
-# JanSeva Finder (जनसेवा फाइंडर)
+# SevaKhoj India (सेवाखोज इंडिया)
 
 > **Independent Public Information & Government Services Discovery Directory for India**
 
-JanSeva Finder is an open, client-side, zero-login public information platform designed to help citizens across India discover verified government services, welfare schemes, student scholarships, public employment, internships, and digital documents from genuine official domains (`.gov.in` and `.nic.in`).
+SevaKhoj India is an open, client-side, zero-login public information platform designed to help citizens across India discover verified government services, welfare schemes, student scholarships, public employment, internships, and digital documents from genuine official domains (`.gov.in` and `.nic.in`).
 
 ---
 
 ## 🏛 Key Principles & Safety Standards
 
 1. **No User Login / No Accounts**: Completely public and accessible without requiring accounts, signups, passwords, or authentication.
-2. **Independent Directory**: Explicitly disclaims government affiliation. JanSeva Finder does not process government applications, collect administrative fees, or guarantee admissions/jobs.
+2. **Independent Directory**: Explicitly disclaims government affiliation. SevaKhoj India does not process government applications, collect administrative fees, or guarantee admissions/jobs.
 3. **Verified Official Portals Only**: Every listing links directly to the real government website (e.g. `scholarships.gov.in`, `digilocker.gov.in`, `ncs.gov.in`, `parivahan.gov.in`, `myaadhaar.uidai.gov.in`, `myscheme.gov.in`, `web.umang.gov.in`).
 4. **Zero-Sensitivity Data Policy**: Never requests or stores Aadhaar numbers, PAN numbers, OTPs, passwords, or bank credentials.
 
@@ -89,4 +89,4 @@ Cloudflare Pages natively supports Single-Page Applications (SPAs). Our build sy
 
 ## ⚖️ Legal Disclaimer
 
-JanSeva Finder is an independent information platform and is not affiliated with, operated by, or endorsed by the Government of India or any government department. Information may change. Always verify eligibility, fees, deadlines and requirements on the official website before taking action.
+SevaKhoj India is an independent information platform and is not affiliated with, operated by, or endorsed by the Government of India or any government department. Information may change. Always verify eligibility, fees, deadlines and requirements on the official website before taking action.

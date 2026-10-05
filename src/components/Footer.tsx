@@ -33,7 +33,7 @@ export const Footer: React.FC<Props> = ({ onNavigate }) => {
             <div className="flex items-center gap-2.5">
               <img
                 src="/janseva-logo.png"
-                alt="JanSeva Finder logo"
+                alt="SevaKhoj India logo"
                 className="w-8 h-8 rounded-lg object-contain shrink-0 bg-white p-0.5 border border-slate-800 shadow-sm"
                 width={32}
                 height={32}
@@ -41,7 +41,7 @@ export const Footer: React.FC<Props> = ({ onNavigate }) => {
                 decoding="async"
               />
               <span className="text-xl font-bold tracking-tight text-white font-display">
-                JanSeva<span className="text-indigo-400">Finder</span>
+                SevaKhoj<span className="text-indigo-400 ml-1">India</span>
               </span>
             </div>
 
@@ -135,7 +135,7 @@ export const Footer: React.FC<Props> = ({ onNavigate }) => {
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a href="/about" onClick={(e) => handleNav('/about', e)} className="hover:text-white transition-colors">
-                  About JanSeva Finder
+                  About SevaKhoj India
                 </a>
               </li>
               <li>
@@ -174,14 +174,14 @@ export const Footer: React.FC<Props> = ({ onNavigate }) => {
             <span>Public Trust Notice & Non-Government Disclaimer</span>
           </div>
           <p className="leading-relaxed text-slate-300">
-            JanSeva Finder is an independent information platform and is not affiliated with, operated by, or endorsed by the Government of India or any government department. Information may change. Always verify eligibility, fees, deadlines and requirements on the official website before taking action.
+            SevaKhoj India is an independent information platform and is not affiliated with, operated by, or endorsed by the Government of India or any government department. Information may change. Always verify eligibility, fees, deadlines and requirements on the official website before taking action.
           </p>
         </div>
 
         {/* Bottom copyright */}
         <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <div>
-            © {new Date().getFullYear()} JanSeva Finder. Independent Public Resource Directory.
+            © {new Date().getFullYear()} SevaKhoj India. Independent Public Resource Directory.
           </div>
           <div className="flex items-center gap-4">
             <span>Verified October 2026</span>

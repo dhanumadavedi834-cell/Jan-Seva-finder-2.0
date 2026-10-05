@@ -23,7 +23,7 @@ export const DisclaimerBanner: React.FC<Props> = ({ condensed = false }) => {
           </div>
           <p className="leading-relaxed">
             <span className="font-semibold text-slate-900 dark:text-white">Independent Information Platform:</span>{' '}
-            JanSeva Finder is <span className="font-medium">not affiliated with or endorsed by the Government of India</span>.
+            SevaKhoj India is <span className="font-medium">not affiliated with or endorsed by the Government of India</span>.
             Always verify details on the official website before submitting personal information or making payments.
           </p>
         </div>
