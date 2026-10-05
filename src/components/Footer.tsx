@@ -31,9 +31,15 @@ export const Footer: React.FC<Props> = ({ onNavigate }) => {
           {/* Col 1 & 2: Brand & Mission */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold">
-                <span className="text-sm font-display">JS</span>
-              </div>
+              <img
+                src="/janseva-logo.png"
+                alt="JanSeva Finder logo"
+                className="w-8 h-8 rounded-lg object-contain shrink-0 bg-white p-0.5 border border-slate-800 shadow-sm"
+                width={32}
+                height={32}
+                loading="lazy"
+                decoding="async"
+              />
               <span className="text-xl font-bold tracking-tight text-white font-display">
                 JanSeva<span className="text-indigo-400">Finder</span>
               </span>

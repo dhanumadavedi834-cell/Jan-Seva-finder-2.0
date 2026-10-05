@@ -1,0 +1,101 @@
+import fs from 'fs';
+import { execSync } from 'child_process';
+
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <style>
+      .cls-blue { fill: #0c4d87; }
+      .cls-blue-stroke { stroke: #0c4d87; fill: none; }
+      .cls-orange { fill: #f26522; }
+      .cls-green { fill: #008837; }
+      .text-title { font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: 800; font-size: 135px; text-anchor: middle; }
+      .text-sub { font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: 800; font-size: 110px; text-anchor: middle; }
+      .text-tagline { font-family: 'Liberation Sans', 'DejaVu Sans', sans-serif; font-weight: 500; font-size: 36px; fill: #333f48; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Clean Pure White Background -->
+  <rect width="1024" height="1024" fill="#ffffff" />
+
+  <!-- Magnifying Glass Icon & Government Building -->
+  <g id="main-emblem">
+    <!-- Magnifying Glass Handle -->
+    <line x1="620" y1="390" x2="745" y2="515" stroke="#0c4d87" stroke-width="46" stroke-linecap="round" />
+
+    <!-- Magnifying Glass Lens Outer Circle -->
+    <circle cx="512" cy="285" r="182" stroke="#0c4d87" stroke-width="40" fill="#ffffff" />
+
+    <!-- Flagpole -->
+    <line x1="512" y1="120" x2="512" y2="175" stroke="#0c4d87" stroke-width="5" stroke-linecap="round" />
+    <circle cx="512" cy="118" r="4" fill="#f26522" />
+
+    <!-- Indian Tricolor Flag (Saffron, White, Green) -->
+    <!-- Top Saffron stripe -->
+    <path d="M 514 124 C 528 118 542 128 556 126 C 564 125 570 128 572 126 L 572 136 C 570 138 564 135 556 136 C 542 138 528 128 514 134 Z" fill="#f26522" />
+    <!-- Middle White stripe -->
+    <path d="M 514 134 C 528 128 542 138 556 136 C 564 135 570 138 572 136 L 572 146 C 570 148 564 145 556 146 C 542 148 528 138 514 144 Z" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5" />
+    <circle cx="543" cy="140" r="2.5" fill="#0c4d87" />
+    <!-- Bottom Green stripe -->
+    <path d="M 514 144 C 528 138 542 148 556 146 C 564 145 570 148 572 146 L 572 156 C 570 158 564 155 556 156 C 542 158 528 148 514 154 Z" fill="#008837" />
+
+    <!-- Dome Top -->
+    <path d="M 454 235 C 454 175 570 175 570 235 Z" fill="#0c4d87" />
+    <path d="M 444 243 L 580 243 L 574 235 L 450 235 Z" fill="#0c4d87" />
+    <path d="M 432 254 L 592 254 L 584 243 L 440 243 Z" fill="#0c4d87" />
+
+    <!-- Colonnade Facade -->
+    <rect x="424" y="254" width="176" height="92" fill="#0c4d87" />
+
+    <!-- 4 White Pillars / Openings -->
+    <rect x="444" y="268" width="16" height="78" rx="2" fill="#ffffff" />
+    <rect x="478" y="268" width="16" height="78" rx="2" fill="#ffffff" />
+    <rect x="530" y="268" width="16" height="78" rx="2" fill="#ffffff" />
+    <rect x="564" y="268" width="16" height="78" rx="2" fill="#ffffff" />
+
+    <!-- Person Silhouette in Center -->
+    <!-- Head -->
+    <circle cx="512" cy="328" r="32" fill="#0c4d87" stroke="#ffffff" stroke-width="4.5" />
+    <!-- Torso -->
+    <path d="M 456 424 C 456 368 568 368 568 424 Z" fill="#0c4d87" stroke="#ffffff" stroke-width="4.5" />
+
+    <!-- Open Book Spread Wings -->
+    <g id="open-book">
+      <!-- Left Saffron Wings -->
+      <!-- Upper Layer -->
+      <path d="M 508 525 C 476 480 376 428 286 420 C 278 438 272 454 266 470 C 348 476 440 508 506 536 Z" fill="#f26522" />
+      <!-- Lower Layer -->
+      <path d="M 506 538 C 450 516 366 488 284 480 C 294 496 304 512 318 528 C 382 534 456 550 504 558 Z" fill="#f26522" />
+
+      <!-- Right Green Wings -->
+      <!-- Upper Layer -->
+      <path d="M 516 525 C 548 480 648 428 738 420 C 746 438 752 454 758 470 C 676 476 584 508 518 536 Z" fill="#008837" />
+      <!-- Lower Layer -->
+      <path d="M 518 538 C 574 516 658 488 740 480 C 730 496 720 512 706 528 C 642 534 568 550 520 558 Z" fill="#008837" />
+    </g>
+  </g>
+
+  <!-- Typography -->
+  <!-- "JanSeva" in Rich Blue -->
+  <text x="512" y="668" fill="#0c4d87" class="text-title" letter-spacing="-1.5px">JanSeva</text>
+
+  <!-- "— Finder —" -->
+  <!-- Left Orange Dash -->
+  <line x1="168" y1="740" x2="276" y2="740" stroke="#f26522" stroke-width="14" stroke-linecap="round" />
+  
+  <!-- "Finder" in Emerald Green -->
+  <text x="512" y="774" fill="#008837" class="text-sub" letter-spacing="-1px">Finder</text>
+
+  <!-- Right Green Dash -->
+  <line x1="748" y1="740" x2="856" y2="740" stroke="#008837" stroke-width="14" stroke-linecap="round" />
+
+  <!-- Subtitle Text -->
+  <text x="512" y="865" class="text-tagline">Find Government Services, Schemes,</text>
+  <text x="512" y="915" class="text-tagline">Scholarships, Jobs &amp; More</text>
+</svg>`;
+
+fs.writeFileSync('./public/janseva-logo.svg', svg.trim(), 'utf8');
+console.log('Saved ./public/janseva-logo.svg');
+
+// Render ./public/janseva-logo.png via rsvg-convert at high resolution 1024x1024
+execSync('rsvg-convert -w 1024 -h 1024 ./public/janseva-logo.svg -o ./public/janseva-logo.png');
+console.log('Generated ./public/janseva-logo.png (1024x1024)');

@@ -51,12 +51,29 @@ export function updatePageSEO({ title, description, canonicalPath, breadcrumbs }
   let ogDesc = document.querySelector('meta[property="og:description"]');
   if (ogDesc) ogDesc.setAttribute('content', finalDesc);
 
+  const logoUrl = `${PRODUCTION_ORIGIN}/janseva-logo.png`;
+  let ogImg = document.querySelector('meta[property="og:image"]');
+  if (!ogImg) {
+    ogImg = document.createElement('meta');
+    ogImg.setAttribute('property', 'og:image');
+    document.head.appendChild(ogImg);
+  }
+  ogImg.setAttribute('content', logoUrl);
+
   // Twitter
   let twitterTitle = document.querySelector('meta[name="twitter:title"]');
   if (twitterTitle) twitterTitle.setAttribute('content', finalTitle);
 
   let twitterDesc = document.querySelector('meta[name="twitter:description"]');
   if (twitterDesc) twitterDesc.setAttribute('content', finalDesc);
+
+  let twitterImg = document.querySelector('meta[name="twitter:image"]');
+  if (!twitterImg) {
+    twitterImg = document.createElement('meta');
+    twitterImg.setAttribute('name', 'twitter:image');
+    document.head.appendChild(twitterImg);
+  }
+  twitterImg.setAttribute('content', logoUrl);
 
   // Canonical & Social URLs (Always use verified production hostname without hash)
   let cleanPath = (canonicalPath || (typeof window !== 'undefined' ? window.location.pathname : '/')).replace(/^#/, '');

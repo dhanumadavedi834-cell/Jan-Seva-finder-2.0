@@ -57,13 +57,19 @@ export const Header: React.FC<HeaderProps> = ({
             e.preventDefault();
             handleLinkClick('/');
           }}
-          className="flex items-center gap-2.5 group shrink-0 focus-visible:outline-2 focus-visible:outline-indigo-600 rounded"
+          className="flex items-center gap-2.5 sm:gap-3 group shrink-0 focus-visible:outline-2 focus-visible:outline-indigo-600 rounded"
           aria-label="JanSeva Finder - Back to homepage"
         >
-          <div className="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold shadow-sm shadow-indigo-600/20 group-hover:bg-indigo-700 transition-colors">
-            <span className="text-base tracking-tight font-display">JS</span>
-          </div>
-          <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white font-display">
+          <img
+            src="/janseva-logo.png"
+            alt="JanSeva Finder logo"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg object-contain shrink-0 shadow-sm border border-slate-100 dark:border-slate-800 bg-white"
+            width={40}
+            height={40}
+            loading="eager"
+            decoding="async"
+          />
+          <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white font-display flex items-center">
             JanSeva<span className="text-indigo-600 dark:text-indigo-400">Finder</span>
           </span>
         </a>
