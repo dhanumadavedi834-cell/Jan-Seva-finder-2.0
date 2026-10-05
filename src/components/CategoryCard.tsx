@@ -21,12 +21,14 @@ interface CategoryCardProps {
   category: CategoryInfo;
   count: number;
   onClick: () => void;
+  href?: string;
 }
 
 export const CategoryCard: React.FC<CategoryCardProps> = ({
   category,
   count,
   onClick,
+  href,
 }) => {
   const getIcon = (name: string) => {
     switch (name) {
@@ -46,18 +48,23 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
     }
   };
 
+  const targetUrl = href || (
+    category.id === 'state-services' ? '/states' :
+    category.id === 'scholarships' ? '/scholarships' :
+    category.id === 'schemes' ? '/schemes' :
+    category.id === 'jobs' ? '/jobs' :
+    category.id === 'documents' ? '/documents' :
+    `/services?cat=${category.id}`
+  );
+
   return (
-    <div
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick();
-        }
+    <a
+      href={targetUrl}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick();
       }}
-      className="group p-5 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-xl hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-150 cursor-pointer flex flex-col justify-between focus-visible:outline-2 focus-visible:outline-indigo-600"
+      className="group p-5 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-xl hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-150 cursor-pointer flex flex-col justify-between focus-visible:outline-2 focus-visible:outline-indigo-600 text-left no-underline"
     >
       <div>
         <div className="flex items-center justify-between mb-3">
@@ -82,6 +89,6 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
         <span>Explore category</span>
         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
       </div>
-    </div>
+    </a>
   );
 };

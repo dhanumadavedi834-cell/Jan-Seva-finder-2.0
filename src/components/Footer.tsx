@@ -62,37 +62,37 @@ export const Footer: React.FC<Props> = ({ onNavigate }) => {
             </div>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
-                <a href="#/services" onClick={(e) => handleNav('#/services', e)} className="hover:text-white transition-colors">
+                <a href="/services" onClick={(e) => handleNav('/services', e)} className="hover:text-white transition-colors">
                   All Services
                 </a>
               </li>
               <li>
-                <a href="#/schemes" onClick={(e) => handleNav('#/schemes', e)} className="hover:text-white transition-colors">
+                <a href="/schemes" onClick={(e) => handleNav('/schemes', e)} className="hover:text-white transition-colors">
                   Government Schemes
                 </a>
               </li>
               <li>
-                <a href="#/scholarships" onClick={(e) => handleNav('#/scholarships', e)} className="hover:text-white transition-colors">
+                <a href="/scholarships" onClick={(e) => handleNav('/scholarships', e)} className="hover:text-white transition-colors">
                   Student Scholarships
                 </a>
               </li>
               <li>
-                <a href="#/jobs" onClick={(e) => handleNav('#/jobs', e)} className="hover:text-white transition-colors">
+                <a href="/jobs" onClick={(e) => handleNav('/jobs', e)} className="hover:text-white transition-colors">
                   Government Jobs (NCS)
                 </a>
               </li>
               <li>
-                <a href="#/internships" onClick={(e) => handleNav('#/internships', e)} className="hover:text-white transition-colors">
+                <a href="/internships" onClick={(e) => handleNav('/internships', e)} className="hover:text-white transition-colors">
                   Ministry Internships
                 </a>
               </li>
               <li>
-                <a href="#/documents" onClick={(e) => handleNav('#/documents', e)} className="hover:text-white transition-colors">
+                <a href="/documents" onClick={(e) => handleNav('/documents', e)} className="hover:text-white transition-colors">
                   Documents & DigiLocker
                 </a>
               </li>
               <li>
-                <a href="#/states" onClick={(e) => handleNav('#/states', e)} className="hover:text-white transition-colors">
+                <a href="/states" onClick={(e) => handleNav('/states', e)} className="hover:text-white transition-colors">
                   36 States & UT Portals
                 </a>
               </li>
@@ -128,32 +128,32 @@ export const Footer: React.FC<Props> = ({ onNavigate }) => {
             </div>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
-                <a href="#/about" onClick={(e) => handleNav('#/about', e)} className="hover:text-white transition-colors">
+                <a href="/about" onClick={(e) => handleNav('/about', e)} className="hover:text-white transition-colors">
                   About JanSeva Finder
                 </a>
               </li>
               <li>
-                <a href="#/privacy" onClick={(e) => handleNav('#/privacy', e)} className="hover:text-white transition-colors">
+                <a href="/privacy" onClick={(e) => handleNav('/privacy', e)} className="hover:text-white transition-colors">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#/terms" onClick={(e) => handleNav('#/terms', e)} className="hover:text-white transition-colors">
+                <a href="/terms" onClick={(e) => handleNav('/terms', e)} className="hover:text-white transition-colors">
                   Terms of Use
                 </a>
               </li>
               <li>
-                <a href="#/disclaimer" onClick={(e) => handleNav('#/disclaimer', e)} className="hover:text-white transition-colors">
+                <a href="/disclaimer" onClick={(e) => handleNav('/disclaimer', e)} className="hover:text-white transition-colors">
                   Official Disclaimer
                 </a>
               </li>
               <li>
-                <a href="#/contact" onClick={(e) => handleNav('#/contact', e)} className="hover:text-white transition-colors">
+                <a href="/contact" onClick={(e) => handleNav('/contact', e)} className="hover:text-white transition-colors">
                   Contact & Feedback
                 </a>
               </li>
               <li>
-                <a href="#/analytics" onClick={(e) => handleNav('#/analytics', e)} className="hover:text-white transition-colors text-xs text-slate-400">
+                <a href="/analytics" onClick={(e) => handleNav('/analytics', e)} className="hover:text-white transition-colors text-xs text-slate-400">
                   Directory Insights (Logs)
                 </a>
               </li>

@@ -37,7 +37,7 @@ export const ServiceDetails: React.FC<ServiceDetailsProps> = ({
   const [copied, setCopied] = useState(false);
 
   const handleShare = () => {
-    const url = window.location.href;
+    const url = `${window.location.origin}/services/${service.id}`;
     navigator.clipboard?.writeText(url).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -49,8 +49,8 @@ export const ServiceDetails: React.FC<ServiceDetailsProps> = ({
   ).slice(0, 3);
 
   const breadcrumbs = [
-    { label: 'Directory', path: '#/services' },
-    { label: service.categoryLabel || service.category, path: `#/services?cat=${service.category}` },
+    { label: 'Directory', path: '/services' },
+    { label: service.categoryLabel || service.category, path: `/services?cat=${service.category}` },
     { label: service.name },
   ];
 
@@ -61,13 +61,17 @@ export const ServiceDetails: React.FC<ServiceDetailsProps> = ({
         <Breadcrumbs items={breadcrumbs} onNavigate={onNavigate} />
 
         <div className="flex items-center gap-2 self-start sm:self-auto">
-          <button
-            onClick={onBack}
+          <a
+            href="/services"
+            onClick={(e) => {
+              e.preventDefault();
+              onBack();
+            }}
             className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 py-1.5 px-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
             <span>Back to Results</span>
-          </button>
+          </a>
 
           <button
             onClick={handleShare}
@@ -321,13 +325,17 @@ export const ServiceDetails: React.FC<ServiceDetailsProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {relatedServices.map((rel) => (
-              <div
+              <a
                 key={rel.id}
-                onClick={() => onSelectRelated(rel)}
-                className="p-4 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-xl hover:border-indigo-400 dark:hover:border-indigo-600 hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between"
+                href={`/services/${rel.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectRelated(rel);
+                }}
+                className="p-4 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-xl hover:border-indigo-400 dark:hover:border-indigo-600 hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between text-left no-underline group"
               >
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1">
+                  <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                     {rel.name}
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
@@ -336,9 +344,9 @@ export const ServiceDetails: React.FC<ServiceDetailsProps> = ({
                 </div>
                 <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-indigo-600 dark:text-indigo-400 font-medium">
                   <span>View Details</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </section>

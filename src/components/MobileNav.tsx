@@ -8,18 +8,19 @@ interface Props {
 
 export const MobileNav: React.FC<Props> = ({ currentPath, onNavigate }) => {
   const items = [
-    { label: 'Home', path: '#/', icon: Home },
-    { label: 'Search', path: '#/services', icon: Search },
-    { label: 'Documents', path: '#/documents', icon: FileText },
-    { label: 'States', path: '#/states', icon: MapPin },
-    { label: 'Students', path: '#/scholarships', icon: GraduationCap },
+    { label: 'Home', path: '/', icon: Home },
+    { label: 'Search', path: '/services', icon: Search },
+    { label: 'Documents', path: '/documents', icon: FileText },
+    { label: 'States', path: '/states', icon: MapPin },
+    { label: 'Students', path: '/scholarships', icon: GraduationCap },
   ];
 
   const isActive = (path: string) => {
-    if (path === '#/' && (currentPath === '#/' || currentPath === '' || currentPath === '#')) {
+    const cleanCurrent = currentPath.split('?')[0];
+    if (path === '/' && (cleanCurrent === '/' || cleanCurrent === '' || cleanCurrent === '/index.html')) {
       return true;
     }
-    return currentPath.startsWith(path) && path !== '#/';
+    return cleanCurrent.startsWith(path) && path !== '/';
   };
 
   return (
@@ -32,9 +33,13 @@ export const MobileNav: React.FC<Props> = ({ currentPath, onNavigate }) => {
           const active = isActive(item.path);
           const Icon = item.icon;
           return (
-            <button
+            <a
               key={item.path}
-              onClick={() => onNavigate(item.path)}
+              href={item.path}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(item.path);
+              }}
               className={`flex flex-col items-center justify-center min-w-[56px] py-1 px-2 rounded-lg text-[10px] font-medium transition-colors ${
                 active
                   ? 'text-indigo-600 dark:text-indigo-400 font-semibold'
@@ -43,7 +48,7 @@ export const MobileNav: React.FC<Props> = ({ currentPath, onNavigate }) => {
             >
               <Icon className={`w-5 h-5 mb-0.5 ${active ? 'stroke-[2.5]' : 'stroke-[1.75]'}`} />
               <span>{item.label}</span>
-            </button>
+            </a>
           );
         })}
       </div>

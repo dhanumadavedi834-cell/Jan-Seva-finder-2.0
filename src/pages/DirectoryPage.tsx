@@ -4,6 +4,7 @@ import { ServiceCard } from '../components/ServiceCard';
 import { ServiceGrid } from '../components/ServiceGrid';
 import { SearchBar } from '../components/SearchBar';
 import { FilterBar } from '../components/FilterBar';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Service } from '../types/service';
 import { trackEvent } from '../utils/analytics';
 
@@ -11,12 +12,14 @@ interface DirectoryPageProps {
   initialQuery?: string;
   initialCategory?: string;
   onSelectService: (service: Service) => void;
+  onNavigate?: (path: string) => void;
 }
 
 export const DirectoryPage: React.FC<DirectoryPageProps> = ({
   initialQuery = '',
   initialCategory = '',
   onSelectService,
+  onNavigate,
 }) => {
   const [query, setQuery] = useState(initialQuery);
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
@@ -107,16 +110,30 @@ export const DirectoryPage: React.FC<DirectoryPageProps> = ({
     }
   };
 
+  const isSchemes = initialCategory === 'schemes' || selectedCategory === 'schemes';
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={
+          isSchemes
+            ? [{ label: 'Directory', path: '/services' }, { label: 'Government Schemes' }]
+            : [{ label: 'Government Services' }]
+        }
+        onNavigate={onNavigate}
+      />
+
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-display">
-            Public Services & Schemes Directory
+            {isSchemes ? 'Government Schemes Directory' : 'Government Services Directory'}
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Search verified government portals, schemes, scholarships, and documents without logging in.
+            {isSchemes
+              ? 'Directory of verified Central and State Government welfare schemes across agriculture, health, housing, financial inclusion, and citizen welfare.'
+              : 'Search verified government portals, schemes, scholarships, and documents without logging in.'}
           </p>
         </div>
 

@@ -28,25 +28,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectService 
     e.preventDefault();
     if (searchQuery.trim()) {
       trackEvent('search', { query: searchQuery.trim() });
-      onNavigate(`#/services?q=${encodeURIComponent(searchQuery.trim())}`);
+      onNavigate(`/services?q=${encodeURIComponent(searchQuery.trim())}`);
     } else {
-      onNavigate('#/services');
+      onNavigate('/services');
     }
   };
 
   const handlePopularSelect = (term: string) => {
     trackEvent('search', { query: term });
-    onNavigate(`#/services?q=${encodeURIComponent(term)}`);
+    onNavigate(`/services?q=${encodeURIComponent(term)}`);
   };
 
   const handleCategoryClick = (categoryId: string) => {
     trackEvent('category_open', { target: categoryId });
-    if (categoryId === 'scholarships') onNavigate('#/scholarships');
-    else if (categoryId === 'jobs') onNavigate('#/jobs');
-    else if (categoryId === 'internships') onNavigate('#/internships');
-    else if (categoryId === 'documents') onNavigate('#/documents');
-    else if (categoryId === 'state-services') onNavigate('#/states');
-    else onNavigate(`#/services?cat=${categoryId}`);
+    if (categoryId === 'scholarships') onNavigate('/scholarships');
+    else if (categoryId === 'jobs') onNavigate('/jobs');
+    else if (categoryId === 'internships') onNavigate('/internships');
+    else if (categoryId === 'documents') onNavigate('/documents');
+    else if (categoryId === 'state-services') onNavigate('/states');
+    else onNavigate(`/services?cat=${categoryId}`);
   };
 
   const getCategoryCount = (catId: string) => {
@@ -99,13 +99,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectService 
               Explore 12 domains of public services, welfare schemes, digital certificates, and citizen infrastructure.
             </p>
           </div>
-          <button
-            onClick={() => onNavigate('#/services')}
+          <a
+            href="/services"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/services');
+            }}
             className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
           >
             <span>View All Services</span>
             <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -131,13 +135,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectService 
               Popular Government Portals & Services
             </h2>
           </div>
-          <button
-            onClick={() => onNavigate('#/services')}
+          <a
+            href="/services"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('/services');
+            }}
             className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
           >
             <span>Explore All 20+ Portals</span>
             <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -294,19 +302,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectService 
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {recentlyVerified.map((service) => (
-            <div
+            <a
               key={service.id}
-              onClick={() => onSelectService(service)}
-              className="p-4 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-xl hover:border-emerald-400 dark:hover:border-emerald-600 hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between"
+              href={`/services/${service.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelectService(service);
+              }}
+              className="p-4 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-xl hover:border-emerald-400 dark:hover:border-emerald-600 hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between text-left no-underline group"
             >
               <div>
                 <div className="flex items-center gap-1.5 text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold mb-2">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>Verified October 2026</span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1">
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-1 mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   {service.name}
-                </h4>
+                </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
                   {service.shortDescription || service.description}
                 </p>
@@ -314,9 +326,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectService 
 
               <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-indigo-600 dark:text-indigo-400 font-medium">
                 <span>View guidelines</span>
-                <ArrowRight className="w-3 h-3" />
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>

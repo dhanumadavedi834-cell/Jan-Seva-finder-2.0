@@ -118,7 +118,7 @@ export const InternshipsPage: React.FC<InternshipsPageProps> = ({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
       {/* Breadcrumbs */}
       <Breadcrumbs
-        items={[{ label: 'Directory', path: '#/services' }, { label: 'Government Internships' }]}
+        items={[{ label: 'Directory', path: '/services' }, { label: 'Government Internships' }]}
         onNavigate={onNavigate}
       />
 

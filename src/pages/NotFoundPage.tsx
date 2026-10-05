@@ -25,21 +25,29 @@ export const NotFoundPage: React.FC<Props> = ({ onNavigate }) => {
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-        <button
-          onClick={() => onNavigate('#/')}
+        <a
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('/');
+          }}
           className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm rounded-xl transition-colors shadow-sm"
         >
           <Home className="w-4 h-4" />
           <span>Go to Homepage</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => onNavigate('#/services')}
+        <a
+          href="/services"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('/services');
+          }}
           className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm rounded-xl transition-colors"
         >
           <Search className="w-4 h-4" />
           <span>Browse All Services</span>
-        </button>
+        </a>
       </div>
     </div>
   );

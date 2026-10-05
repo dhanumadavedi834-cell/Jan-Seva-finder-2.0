@@ -13,6 +13,7 @@ import {
   Info,
 } from 'lucide-react';
 import { VERIFIED_SERVICES } from '../data/servicesData';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ServiceCard } from '../components/ServiceCard';
 import { ServiceItem } from '../types/service';
 import { trackEvent } from '../utils/analytics';
@@ -63,13 +64,19 @@ export const DocumentsPage: React.FC<Props> = ({ onSelectService, onNavigate }) 
     {
       name: 'Caste, Income & Domicile Certificates',
       desc: 'State government revenue certificates for academic reservations, scholarships, and government subsidies.',
-      actionPath: '#/states',
+      actionPath: '/states',
       officialUrl: 'https://www.india.gov.in/my-government/services',
     },
   ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[{ label: 'Directory', path: '/services' }, { label: 'Government Documents & Certificates' }]}
+        onNavigate={onNavigate}
+      />
+
       {/* Header */}
       <div className="border-b border-slate-200 dark:border-slate-800 pb-6">
         <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 rounded px-2.5 py-1 mb-2">
@@ -77,7 +84,7 @@ export const DocumentsPage: React.FC<Props> = ({ onSelectService, onNavigate }) 
           <span>Statutory Identity & Digital Document Infrastructure</span>
         </div>
         <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-          Essential Documents & Certificates
+          Government Documents & Certificates
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-3xl leading-relaxed">
           Access official application and verification portals for Aadhaar, PAN, Driving Licence, Passport, Birth Certificates, and state-issued Caste, Income, and Domicile documents.
@@ -173,12 +180,16 @@ export const DocumentsPage: React.FC<Props> = ({ onSelectService, onNavigate }) 
                     View Guidelines
                   </button>
                 ) : (
-                  <button
-                    onClick={() => onNavigate('#/states')}
+                  <a
+                    href="/states"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate('/states');
+                    }}
                     className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
                   >
                     Select State Portal
-                  </button>
+                  </a>
                 )}
 
                 <a

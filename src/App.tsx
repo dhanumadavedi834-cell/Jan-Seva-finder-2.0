@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { DisclaimerBanner } from './components/DisclaimerBanner';
@@ -15,25 +15,35 @@ import { LegalPages } from './pages/LegalPages';
 import { AnalyticsPage } from './pages/AnalyticsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { SERVICES } from './data/services';
+import { STATES_AND_UTS } from './data/statesData';
 import { Service } from './types/service';
 import { trackEvent } from './utils/analytics';
 import { updatePageSEO } from './utils/seo';
 
-function getNormalizedRoute(): string {
-  if (typeof window === 'undefined') return '#/';
+function getNormalizedPath(): string {
+  if (typeof window === 'undefined') return '/';
+
+  // Backwards compatibility for legacy hash URLs: e.g. /#/services or /#services
   const hash = window.location.hash;
-  if (hash && hash !== '#' && hash !== '#/') {
-    return hash;
+  if (hash && hash.startsWith('#/')) {
+    const upgradedPath = hash.slice(1); // e.g. '/services'
+    try {
+      window.history.replaceState({}, '', upgradedPath);
+    } catch {
+      // Ignore if state cannot be replaced
+    }
+    return upgradedPath;
   }
+
   const pathname = window.location.pathname;
-  if (pathname && pathname !== '/' && pathname !== '/index.html' && pathname !== '/200.html') {
-    return `#${pathname}${window.location.search || ''}`;
+  if (pathname === '/index.html' || pathname === '/200.html' || !pathname) {
+    return `/${window.location.search || ''}`;
   }
-  return '#/';
+  return `${pathname}${window.location.search || ''}`;
 }
 
 export default function App() {
-  const [currentHash, setCurrentHash] = useState<string>(() => getNormalizedRoute());
+  const [currentPath, setCurrentPath] = useState<string>(() => getNormalizedPath());
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
@@ -59,179 +69,270 @@ export default function App() {
     setIsDarkMode((prev) => !prev);
   };
 
-  // Listen to hash and pathname changes (browser back/forward & internal navigation)
+  const navigateTo = useCallback((targetPath: string) => {
+    let clean = targetPath.replace(/^#/, '');
+    if (!clean.startsWith('/')) {
+      clean = `/${clean}`;
+    }
+
+    try {
+      window.history.pushState({}, '', clean);
+    } catch {
+      // In constrained iframe fallback
+    }
+    setCurrentPath(clean);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const handleSelectService = useCallback((service: Service) => {
+    setSelectedService(service);
+    navigateTo(`/services/${service.id}`);
+  }, [navigateTo]);
+
+  // Route & SEO Resolver
   useEffect(() => {
     const handleRouteChange = () => {
-      const route = getNormalizedRoute();
-      setCurrentHash(route);
+      const pathWithQuery = getNormalizedPath();
+      setCurrentPath(pathWithQuery);
 
-      // Check if route matches /services/:id or /service/:id or /scholarships/:id
-      const serviceMatchPrefix = ['#/service/', '#/services/', '#/scholarships/'].find((p) =>
-        route.startsWith(p) && route.length > p.length
-      );
+      const [path] = pathWithQuery.split('?');
 
-      if (serviceMatchPrefix) {
-        const serviceId = route.replace(serviceMatchPrefix, '').split('?')[0];
+      // 1. Service Detail: /services/:id or /service/:id
+      const servicePrefixes = ['/services/', '/service/', '/scholarships/'];
+      const matchedPrefix = servicePrefixes.find((p) => path.startsWith(p) && path.length > p.length);
+
+      if (matchedPrefix) {
+        const serviceId = path.replace(matchedPrefix, '').split('?')[0].split('/')[0];
         const match = SERVICES.find((s) => s.id === serviceId);
         if (match) {
           setSelectedService(match);
           trackEvent('service_open', { target: match.name });
           updatePageSEO({
-            title: match.name,
+            title: `${match.name} - Application & Official Portal - JanSeva Finder`,
             description: match.shortDescription || match.description,
             canonicalPath: `/services/${match.id}`,
+            breadcrumbs: [
+              { name: 'Government Services', path: '/services' },
+              { name: match.categoryLabel || 'Service', path: `/services?cat=${match.category}` },
+              { name: match.name, path: `/services/${match.id}` },
+            ],
           });
           return;
         }
       }
 
       setSelectedService(null);
-      trackEvent('page_view', { target: route });
+      trackEvent('page_view', { target: path });
 
-      // Dynamic SEO per page
-      if (route.startsWith('#/scholarships')) {
+      // 2. Specific State Detail: /states/:slug
+      if (path.startsWith('/states/') && path.length > '/states/'.length) {
+        const stateSlug = path.replace('/states/', '').split('?')[0].split('/')[0];
+        const stateObj = STATES_AND_UTS.find(
+          (s) => s.name.toLowerCase().replace(/\s+/g, '-') === stateSlug.toLowerCase() ||
+                 s.code.toLowerCase() === stateSlug.toLowerCase()
+        );
+        const stateName = stateObj ? stateObj.name : stateSlug;
         updatePageSEO({
-          title: 'Scholarships & Higher Education Portals AY 2026-27',
-          description: 'Discover national and state scholarships, grants, and higher education financial aid for students in India.',
-          canonicalPath: '/scholarships',
+          title: `${stateName} Citizen Services & Portals - JanSeva Finder`,
+          description: `Access official citizen services, e-District portals, certificates, and welfare applications for ${stateName}.`,
+          canonicalPath: `/states/${stateSlug}`,
+          breadcrumbs: [
+            { name: 'State Services', path: '/states' },
+            { name: stateName, path: `/states/${stateSlug}` },
+          ],
         });
-      } else if (route.startsWith('#/internships')) {
-        updatePageSEO({
-          title: 'Government Internships & Research Fellowships Directory',
-          description: 'Verified public sector internships across Central Ministries, NITI Aayog, and AICTE.',
-          canonicalPath: '/internships',
-        });
-      } else if (route.startsWith('#/jobs')) {
-        updatePageSEO({
-          title: 'Government Jobs & Public Sector Recruitment Directory',
-          description: 'Verified central and state government recruitment portals including NCS, SSC, UPSC, and Railways RRB.',
-          canonicalPath: '/jobs',
-        });
-      } else if (route.startsWith('#/documents')) {
-        updatePageSEO({
-          title: 'Digital Documents, Aadhaar, PAN & DigiLocker Portal',
-          description: 'Access official portals for Aadhaar updates, instant e-PAN, driving licences, passports, and DigiLocker documents.',
-          canonicalPath: '/documents',
-        });
-      } else if (route.startsWith('#/states')) {
-        updatePageSEO({
-          title: '36 State & Union Territory Citizen Services Portals',
-          description: 'Directory of official state citizen service portals, MeeSeva, Seva Sindhu, and e-District services across India.',
-          canonicalPath: '/states',
-        });
-      } else if (route.startsWith('#/services')) {
-        updatePageSEO({
-          title: 'Public Services & Citizen Portals Directory',
-          description: 'Search verified government portals, citizen service centers, and public utilities across India.',
-          canonicalPath: '/services',
-        });
-      } else if (route.startsWith('#/schemes')) {
-        updatePageSEO({
-          title: 'Government Schemes & Citizen Welfare Directory',
-          description: 'Search verified central and state government welfare schemes across India.',
-          canonicalPath: '/schemes',
-        });
-      } else if (route.startsWith('#/about')) {
-        updatePageSEO({
-          title: 'About JanSeva Finder – Independent Civic Directory',
-          description: 'Learn about the mission, verification standards, and editorial integrity of JanSeva Finder.',
-          canonicalPath: '/about',
-        });
-      } else if (route.startsWith('#/privacy')) {
-        updatePageSEO({
-          title: 'Privacy Policy – Zero User Accounts & No PII',
-          description: 'JanSeva Finder privacy commitment: no user accounts, no login required, zero tracking of sensitive data.',
-          canonicalPath: '/privacy',
-        });
-      } else if (route.startsWith('#/disclaimer')) {
-        updatePageSEO({
-          title: 'Disclaimer & Government Non-Affiliation Statement',
-          description: 'Important legal disclosure: JanSeva Finder is an independent platform and not endorsed by the Government of India.',
-          canonicalPath: '/disclaimer',
-        });
-      } else if (route.startsWith('#/terms')) {
-        updatePageSEO({
-          title: 'Terms of Use – JanSeva Finder',
-          description: 'Terms of use and public directory policies for JanSeva Finder.',
-          canonicalPath: '/terms',
-        });
-      } else if (route.startsWith('#/contact')) {
-        updatePageSEO({
-          title: 'Contact & Feedback – JanSeva Finder',
-          description: 'Report broken official links or suggest verified public portals.',
-          canonicalPath: '/contact',
-        });
-      } else {
-        updatePageSEO({
-          title: 'JanSeva Finder – Official Indian Public Services, Schemes & Portals',
-          description: 'Search verified government schemes, scholarships, jobs, internships, documents and public services across India from one independent directory.',
-          canonicalPath: '/',
-        });
+        return;
+      }
+
+      // 3. Main Sections
+      switch (path) {
+        case '/services':
+          updatePageSEO({
+            title: 'Government Services - JanSeva Finder',
+            description: 'Explore verified central and state public services across India. Direct links to official government portals with requirements and fee details.',
+            canonicalPath: '/services',
+            breadcrumbs: [{ name: 'Government Services', path: '/services' }],
+          });
+          break;
+
+        case '/schemes':
+          updatePageSEO({
+            title: 'Government Schemes - JanSeva Finder',
+            description: 'Directory of verified Central and State Government welfare schemes across agriculture, health, housing, financial inclusion, and citizen welfare.',
+            canonicalPath: '/schemes',
+            breadcrumbs: [{ name: 'Government Schemes', path: '/schemes' }],
+          });
+          break;
+
+        case '/scholarships':
+          updatePageSEO({
+            title: 'Government Scholarships - JanSeva Finder',
+            description: 'Discover verified national and state scholarships, higher education grants, and DBT student aid across India for Academic Year 2026-27.',
+            canonicalPath: '/scholarships',
+            breadcrumbs: [{ name: 'Government Scholarships', path: '/scholarships' }],
+          });
+          break;
+
+        case '/jobs':
+          updatePageSEO({
+            title: 'Government Jobs - JanSeva Finder',
+            description: 'Directory of verified central and state government recruitment portals including NCS, SSC, UPSC, and Railways RRB. No fees or intermediaries.',
+            canonicalPath: '/jobs',
+            breadcrumbs: [{ name: 'Government Jobs', path: '/jobs' }],
+          });
+          break;
+
+        case '/internships':
+          updatePageSEO({
+            title: 'Government Internships - JanSeva Finder',
+            description: 'Verified public sector internships and fellowships across Central Ministries, NITI Aayog, AICTE, and municipal bodies with official application details.',
+            canonicalPath: '/internships',
+            breadcrumbs: [{ name: 'Government Internships', path: '/internships' }],
+          });
+          break;
+
+        case '/documents':
+          updatePageSEO({
+            title: 'Government Documents & Certificates - JanSeva Finder',
+            description: 'Access official portals for DigiLocker, Aadhaar updates, instant e-PAN, driving licences, passports, and civil registration certificates.',
+            canonicalPath: '/documents',
+            breadcrumbs: [{ name: 'Government Documents', path: '/documents' }],
+          });
+          break;
+
+        case '/states':
+          updatePageSEO({
+            title: 'State Citizen Services & e-District Portals - JanSeva Finder',
+            description: 'Comprehensive directory of 36 State and Union Territory official citizen service portals, MeeSeva, Seva Sindhu, RTPS, and e-District systems.',
+            canonicalPath: '/states',
+            breadcrumbs: [{ name: 'State Services', path: '/states' }],
+          });
+          break;
+
+        case '/about':
+          updatePageSEO({
+            title: 'About JanSeva Finder - Independent Civic Directory',
+            description: 'Learn about the mission, verification standards, and editorial integrity of JanSeva Finder, an independent citizen resource directory.',
+            canonicalPath: '/about',
+            breadcrumbs: [{ name: 'About', path: '/about' }],
+          });
+          break;
+
+        case '/privacy':
+          updatePageSEO({
+            title: 'Privacy Policy - JanSeva Finder',
+            description: 'Read JanSeva Finder privacy commitment: no user accounts, no login required, and zero collection of personal or financial credentials.',
+            canonicalPath: '/privacy',
+            breadcrumbs: [{ name: 'Privacy Policy', path: '/privacy' }],
+          });
+          break;
+
+        case '/terms':
+          updatePageSEO({
+            title: 'Terms of Use - JanSeva Finder',
+            description: 'Terms of use and public directory policies for JanSeva Finder, an independent civic information index.',
+            canonicalPath: '/terms',
+            breadcrumbs: [{ name: 'Terms of Use', path: '/terms' }],
+          });
+          break;
+
+        case '/disclaimer':
+          updatePageSEO({
+            title: 'Disclaimer & Official Non-Affiliation - JanSeva Finder',
+            description: 'Important legal disclosure: JanSeva Finder is an independent directory and is not affiliated with, operated by, or endorsed by the Government of India.',
+            canonicalPath: '/disclaimer',
+            breadcrumbs: [{ name: 'Disclaimer', path: '/disclaimer' }],
+          });
+          break;
+
+        case '/contact':
+          updatePageSEO({
+            title: 'Contact & Feedback - JanSeva Finder',
+            description: 'Contact JanSeva Finder to report broken official links, suggest verified government portals, or share citizen feedback.',
+            canonicalPath: '/contact',
+            breadcrumbs: [{ name: 'Contact', path: '/contact' }],
+          });
+          break;
+
+        case '/analytics':
+          updatePageSEO({
+            title: 'Directory Insights - JanSeva Finder',
+            description: 'Anonymous telemetry and directory health stats.',
+            canonicalPath: '/analytics',
+          });
+          break;
+
+        case '/':
+        case '':
+          updatePageSEO({
+            title: 'JanSeva Finder - Government Services, Schemes, Scholarships & Jobs',
+            description: 'Search verified Indian government schemes, scholarships, civil recruitment, digital documents, and citizen services from one independent discovery directory.',
+            canonicalPath: '/',
+          });
+          break;
+
+        default:
+          updatePageSEO({
+            title: 'Page Not Found - JanSeva Finder',
+            description: 'The requested page could not be found on JanSeva Finder.',
+            canonicalPath: path,
+          });
+          break;
       }
     };
 
     handleRouteChange();
-    window.addEventListener('hashchange', handleRouteChange);
     window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener('hashchange', handleRouteChange);
 
     return () => {
-      window.removeEventListener('hashchange', handleRouteChange);
       window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('hashchange', handleRouteChange);
     };
   }, []);
 
-  const navigateTo = (path: string) => {
-    const normalized = path.startsWith('#') ? path : `#${path}`;
-    window.location.hash = normalized;
-    setCurrentHash(normalized);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleSelectService = (service: Service) => {
-    setSelectedService(service);
-    navigateTo(`#/services/${service.id}`);
-  };
-
-  // Route resolver helper
+  // View Renderer
   const renderCurrentView = () => {
-    const rawHash = currentHash || '#/';
-    const [path, queryString] = rawHash.split('?');
+    const rawPath = currentPath || '/';
+    const [path, queryString] = rawPath.split('?');
     const params = new URLSearchParams(queryString || '');
     const qParam = params.get('q') || '';
     const catParam = params.get('cat') || '';
 
-    // Service Detail View (routes: #/service/:id or #/services/:id)
-    if (
-      (path.startsWith('#/service/') || path.startsWith('#/services/')) &&
-      selectedService
-    ) {
-      return (
-        <ServiceDetails
-          service={selectedService}
-          onBack={() => navigateTo('#/services')}
-          onSelectRelated={(s) => handleSelectService(s)}
-          onNavigate={navigateTo}
-        />
-      );
+    // 1. Service Detail View
+    const servicePrefixes = ['/services/', '/service/', '/scholarships/'];
+    const matchedPrefix = servicePrefixes.find((p) => path.startsWith(p) && path.length > p.length);
+    if (matchedPrefix) {
+      const serviceId = path.replace(matchedPrefix, '').split('?')[0].split('/')[0];
+      const match = selectedService || SERVICES.find((s) => s.id === serviceId);
+      if (match) {
+        return (
+          <ServiceDetails
+            service={match}
+            onBack={() => navigateTo('/services')}
+            onSelectRelated={(s) => handleSelectService(s)}
+            onNavigate={navigateTo}
+          />
+        );
+      }
     }
 
-    // State specific route: #/states/:state (e.g. #/states/telangana)
-    if (path.startsWith('#/states/') && path.length > '#/states/'.length) {
-      const stateSlug = path.replace('#/states/', '');
+    // 2. State-specific route: /states/:state (e.g. /states/delhi)
+    if (path.startsWith('/states/') && path.length > '/states/'.length) {
+      const stateSlug = path.replace('/states/', '').split('?')[0].split('/')[0];
       return (
         <StatesPage
           activeStateSlug={stateSlug}
-          onSelectState={(slug) => navigateTo(`#/states/${slug}`)}
+          onSelectState={(slug) => navigateTo(`/states/${slug}`)}
           onSelectService={handleSelectService}
           onNavigate={navigateTo}
         />
       );
     }
 
-    // Route matching
+    // 3. Path dispatch
     switch (path) {
-      case '#/':
-      case '#':
+      case '/':
       case '':
         return (
           <HomePage
@@ -240,25 +341,27 @@ export default function App() {
           />
         );
 
-      case '#/services':
+      case '/services':
         return (
           <DirectoryPage
             initialQuery={qParam}
             initialCategory={catParam}
             onSelectService={handleSelectService}
+            onNavigate={navigateTo}
           />
         );
 
-      case '#/schemes':
+      case '/schemes':
         return (
           <DirectoryPage
             initialQuery={qParam}
             initialCategory="schemes"
             onSelectService={handleSelectService}
+            onNavigate={navigateTo}
           />
         );
 
-      case '#/scholarships':
+      case '/scholarships':
         return (
           <StudentsPage
             onSelectService={handleSelectService}
@@ -266,14 +369,15 @@ export default function App() {
           />
         );
 
-      case '#/jobs':
+      case '/jobs':
         return (
           <JobsPage
             onSelectService={handleSelectService}
+            onNavigate={navigateTo}
           />
         );
 
-      case '#/internships':
+      case '/internships':
         return (
           <InternshipsPage
             onSelectService={handleSelectService}
@@ -281,7 +385,7 @@ export default function App() {
           />
         );
 
-      case '#/documents':
+      case '/documents':
         return (
           <DocumentsPage
             onSelectService={handleSelectService}
@@ -289,31 +393,31 @@ export default function App() {
           />
         );
 
-      case '#/states':
+      case '/states':
         return (
           <StatesPage
-            onSelectState={(slug) => navigateTo(`#/states/${slug}`)}
+            onSelectState={(slug) => navigateTo(`/states/${slug}`)}
             onSelectService={handleSelectService}
             onNavigate={navigateTo}
           />
         );
 
-      case '#/about':
+      case '/about':
         return <LegalPages pageType="about" />;
 
-      case '#/privacy':
+      case '/privacy':
         return <LegalPages pageType="privacy" />;
 
-      case '#/terms':
+      case '/terms':
         return <LegalPages pageType="terms" />;
 
-      case '#/disclaimer':
+      case '/disclaimer':
         return <LegalPages pageType="disclaimer" />;
 
-      case '#/contact':
+      case '/contact':
         return <LegalPages pageType="contact" />;
 
-      case '#/analytics':
+      case '/analytics':
         return <AnalyticsPage />;
 
       default:
@@ -326,9 +430,9 @@ export default function App() {
       {/* High-visibility Disclaimer Banner at the very top */}
       <DisclaimerBanner condensed />
 
-      {/* Header */}
+      {/* Header with crawlable links */}
       <Header
-        currentPath={currentHash}
+        currentPath={currentPath}
         onNavigate={navigateTo}
         isDarkMode={isDarkMode}
         onToggleDarkMode={toggleDarkMode}
@@ -339,11 +443,11 @@ export default function App() {
         {renderCurrentView()}
       </main>
 
-      {/* Comprehensive Footer */}
+      {/* Comprehensive Footer with crawlable links */}
       <Footer onNavigate={navigateTo} />
 
       {/* Mobile-first bottom quick nav for small screens */}
-      <MobileNav currentPath={currentHash} onNavigate={navigateTo} />
+      <MobileNav currentPath={currentPath} onNavigate={navigateTo} />
     </div>
   );
 }

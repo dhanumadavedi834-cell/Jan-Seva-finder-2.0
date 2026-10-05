@@ -68,7 +68,7 @@ export const StatesPage: React.FC<StatesPageProps> = ({
     if (onSelectState) {
       onSelectState(slug);
     } else if (onNavigate) {
-      onNavigate(`#/states/${slug}`);
+      onNavigate(`/states/${slug}`);
     }
   };
 
@@ -86,7 +86,7 @@ export const StatesPage: React.FC<StatesPageProps> = ({
   // SINGLE STATE DETAIL VIEW
   if (activeState) {
     const breadcrumbs = [
-      { label: 'States Directory', path: '#/states' },
+      { label: 'State Services', path: '/states' },
       { label: activeState.name },
     ];
 
@@ -96,13 +96,17 @@ export const StatesPage: React.FC<StatesPageProps> = ({
 
         {/* Back Button */}
         <div>
-          <button
-            onClick={() => onNavigate && onNavigate('#/states')}
+          <a
+            href="/states"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate && onNavigate('/states');
+            }}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 py-1.5 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>View All 36 States & UTs</span>
-          </button>
+          </a>
         </div>
 
         {/* State Banner Card */}
@@ -195,6 +199,12 @@ export const StatesPage: React.FC<StatesPageProps> = ({
   // ALL STATES DIRECTORY VIEW
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[{ label: 'Directory', path: '/services' }, { label: 'State Services' }]}
+        onNavigate={onNavigate}
+      />
+
       {/* Header */}
       <div className="border-b border-slate-200 dark:border-slate-800 pb-5">
         <div className="inline-flex items-center gap-1 text-xs font-semibold text-sky-700 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/60 rounded px-2.5 py-1 mb-2">
@@ -242,83 +252,83 @@ export const StatesPage: React.FC<StatesPageProps> = ({
 
       {/* Grid of States */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {filteredStates.map((st) => (
-          <div
-            key={st.code}
-            onClick={() => handleStateClick(st.name)}
-            className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-xl p-5 hover:border-sky-400 dark:hover:border-sky-600 hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group"
-          >
-            <div>
-              {/* Header line */}
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-                <span className="font-mono text-slate-500 dark:text-slate-400 font-semibold">
-                  {st.type} · Capital: {st.capital}
-                </span>
-                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-semibold">
-                  {st.code}
-                </span>
-              </div>
-
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white font-display mb-1 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
-                {st.name}
-              </h2>
-
-              <div className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
-                {st.citizenPortalName}
-              </div>
-
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-2">
-                {st.description}
-              </p>
-
-              {/* Key Services List */}
-              <div className="mb-4">
-                <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
-                  Available Online Certificates:
+        {filteredStates.map((st) => {
+          const stateSlug = st.name.toLowerCase().replace(/\s+/g, '-');
+          return (
+            <a
+              key={st.code}
+              href={`/states/${stateSlug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleStateClick(st.name);
+              }}
+              className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-xl p-5 hover:border-sky-400 dark:hover:border-sky-600 hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group text-left no-underline"
+            >
+              <div>
+                {/* Header line */}
+                <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
+                  <span className="font-mono text-slate-500 dark:text-slate-400 font-semibold">
+                    {st.type} · Capital: {st.capital}
+                  </span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-semibold">
+                    {st.code}
+                  </span>
                 </div>
-                <ul className="text-xs text-slate-600 dark:text-slate-300 space-y-1">
-                  {st.keyServices.slice(0, 3).map((svc, i) => (
-                    <li key={i} className="flex items-center gap-1.5 truncate">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shrink-0" />
-                      <span className="truncate">{svc}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
 
-            {/* Bottom Actions */}
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
-              {st.helpline && (
-                <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
-                  <PhoneCall className="w-3 h-3 text-slate-400 shrink-0" />
-                  <span>Helpline: <strong className="font-mono text-slate-700 dark:text-slate-200">{st.helpline}</strong></span>
+                <h2 className="text-lg font-bold text-slate-900 dark:text-white font-display mb-1 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                  {st.name}
+                </h2>
+
+                <div className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
+                  {st.citizenPortalName}
                 </div>
-              )}
 
-              <div className="pt-1 flex items-center justify-between gap-2">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleStateClick(st.name);
-                  }}
-                  className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
-                >
-                  <span>Explore Resources</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-2">
+                  {st.description}
+                </p>
 
-                <OfficialButton
-                  url={st.officialPortalUrl}
-                  serviceName={`${st.name} Portal`}
-                  size="sm"
+                {/* Key Services List */}
+                <div className="mb-4">
+                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+                    Available Online Certificates:
+                  </div>
+                  <ul className="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                    {st.keyServices.slice(0, 3).map((svc, i) => (
+                      <li key={i} className="flex items-center gap-1.5 truncate">
+                        <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shrink-0" />
+                        <span className="truncate">{svc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Bottom Actions */}
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
+                {st.helpline && (
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                    <PhoneCall className="w-3 h-3 text-slate-400 shrink-0" />
+                    <span>Helpline: <strong className="font-mono text-slate-700 dark:text-slate-200">{st.helpline}</strong></span>
+                  </div>
+                )}
+
+                <div className="pt-1 flex items-center justify-between gap-2">
+                  <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 group-hover:underline flex items-center gap-1">
+                    <span>Explore Resources</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+
+                  <OfficialButton
+                    url={st.officialPortalUrl}
+                    serviceName={`${st.name} Portal`}
+                    size="sm"
                   label="Official Portal"
                 />
               </div>
             </div>
-          </div>
-        ))}
+          </a>
+        );
+      })}
       </div>
 
       {filteredStates.length === 0 && (

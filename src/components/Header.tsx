@@ -1,27 +1,20 @@
 import React, { useState } from 'react';
 import {
+  Search,
   Menu,
   X,
-  Moon,
   Sun,
-  Search,
-  Compass,
-  FileText,
-  GraduationCap,
-  Briefcase,
-  Layers,
-  MapPin,
-  Sparkles,
+  Moon,
 } from 'lucide-react';
 
-interface Props {
+interface HeaderProps {
   currentPath: string;
   onNavigate: (path: string) => void;
   isDarkMode: boolean;
   onToggleDarkMode: () => void;
 }
 
-export const Header: React.FC<Props> = ({
+export const Header: React.FC<HeaderProps> = ({
   currentPath,
   onNavigate,
   isDarkMode,
@@ -30,15 +23,15 @@ export const Header: React.FC<Props> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Home', path: '#/' },
-    { label: 'Services', path: '#/services' },
-    { label: 'Schemes', path: '#/schemes' },
-    { label: 'Scholarships', path: '#/scholarships' },
-    { label: 'Jobs', path: '#/jobs' },
-    { label: 'Internships', path: '#/internships' },
-    { label: 'Documents', path: '#/documents' },
-    { label: 'State Services', path: '#/states' },
-    { label: 'About', path: '#/about' },
+    { label: 'Home', path: '/' },
+    { label: 'Services', path: '/services' },
+    { label: 'Schemes', path: '/schemes' },
+    { label: 'Scholarships', path: '/scholarships' },
+    { label: 'Jobs', path: '/jobs' },
+    { label: 'Internships', path: '/internships' },
+    { label: 'Documents', path: '/documents' },
+    { label: 'State Services', path: '/states' },
+    { label: 'About', path: '/about' },
   ];
 
   const handleLinkClick = (path: string) => {
@@ -47,10 +40,11 @@ export const Header: React.FC<Props> = ({
   };
 
   const isActive = (path: string) => {
-    if (path === '#/' && (currentPath === '#/' || currentPath === '' || currentPath === '#')) {
+    const cleanCurrent = currentPath.split('?')[0];
+    if (path === '/' && (cleanCurrent === '/' || cleanCurrent === '' || cleanCurrent === '/index.html')) {
       return true;
     }
-    return currentPath.startsWith(path) && path !== '#/';
+    return cleanCurrent.startsWith(path) && path !== '/';
   };
 
   return (
@@ -58,10 +52,10 @@ export const Header: React.FC<Props> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Zone 1: Single text element Brand Zone */}
         <a
-          href="#/"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            handleLinkClick('#/');
+            handleLinkClick('/');
           }}
           className="flex items-center gap-2.5 group shrink-0 focus-visible:outline-2 focus-visible:outline-indigo-600 rounded"
           aria-label="JanSeva Finder - Back to homepage"
@@ -107,50 +101,50 @@ export const Header: React.FC<Props> = ({
         {/* Fallback for medium screens (lg:flex, xl:hidden compact menu) */}
         <div className="hidden lg:flex xl:hidden items-center gap-4 text-xs font-medium text-slate-600 dark:text-slate-300">
           <a
-            href="#/services"
+            href="/services"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick('#/services');
+              handleLinkClick('/services');
             }}
             className="hover:text-slate-900 dark:hover:text-white"
           >
             Services
           </a>
           <a
-            href="#/scholarships"
+            href="/scholarships"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick('#/scholarships');
+              handleLinkClick('/scholarships');
             }}
             className="hover:text-slate-900 dark:hover:text-white"
           >
             Scholarships
           </a>
           <a
-            href="#/jobs"
+            href="/jobs"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick('#/jobs');
+              handleLinkClick('/jobs');
             }}
             className="hover:text-slate-900 dark:hover:text-white"
           >
             Jobs
           </a>
           <a
-            href="#/documents"
+            href="/documents"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick('#/documents');
+              handleLinkClick('/documents');
             }}
             className="hover:text-slate-900 dark:hover:text-white"
           >
             Documents
           </a>
           <a
-            href="#/states"
+            href="/states"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick('#/states');
+              handleLinkClick('/states');
             }}
             className="hover:text-slate-900 dark:hover:text-white"
           >
@@ -158,16 +152,23 @@ export const Header: React.FC<Props> = ({
           </a>
         </div>
 
-        {/* Zone 3: Actions - Search quick trigger, Dark mode toggle, Mobile menu (NO LOGIN) */}
+        {/* Zone 3: Actions - Search quick trigger, Dark mode toggle, Mobile menu */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <button
-            onClick={() => handleLinkClick('#/services')}
+          <a
+            href="/services"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick('/services');
+            }}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg transition-colors border border-slate-200 dark:border-slate-700"
-            title="Browse Directory"
+            aria-label="Quick search all services"
           >
-            <Search className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
-            <span className="hidden sm:inline">Search Directory</span>
-          </button>
+            <Search className="w-3.5 h-3.5 text-slate-500" />
+            <span className="hidden sm:inline">Search Portals</span>
+            <kbd className="hidden md:inline-block ml-1 px-1.5 py-0.5 text-[10px] font-mono bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded text-slate-500">
+              /
+            </kbd>
+          </a>
 
           <button
             onClick={onToggleDarkMode}

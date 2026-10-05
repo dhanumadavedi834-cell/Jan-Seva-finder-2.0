@@ -13,15 +13,17 @@ import {
   Calendar,
 } from 'lucide-react';
 import { VERIFIED_SERVICES } from '../data/servicesData';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ServiceCard } from '../components/ServiceCard';
 import { ServiceItem } from '../types/service';
 import { trackEvent } from '../utils/analytics';
 
 interface Props {
   onSelectService: (service: ServiceItem) => void;
+  onNavigate?: (path: string) => void;
 }
 
-export const JobsPage: React.FC<Props> = ({ onSelectService }) => {
+export const JobsPage: React.FC<Props> = ({ onSelectService, onNavigate }) => {
   const [filterType, setFilterType] = useState<'All' | 'Apex' | 'Defence' | 'Railways'>('All');
 
   const jobServices = VERIFIED_SERVICES.filter(
@@ -69,6 +71,12 @@ export const JobsPage: React.FC<Props> = ({ onSelectService }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[{ label: 'Directory', path: '/services' }, { label: 'Government Jobs' }]}
+        onNavigate={onNavigate}
+      />
+
       {/* Header */}
       <div className="border-b border-slate-200 dark:border-slate-800 pb-6">
         <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 rounded px-2.5 py-1 mb-2">

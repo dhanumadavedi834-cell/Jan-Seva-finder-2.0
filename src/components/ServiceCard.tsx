@@ -20,7 +20,7 @@ export const ServiceCard: React.FC<Props> = ({ service, onSelect }) => {
 
   const handleShare = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const url = `${window.location.origin}/#/service/${service.id}`;
+    const url = `${window.location.origin}/services/${service.id}`;
     navigator.clipboard?.writeText(url).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -76,9 +76,10 @@ export const ServiceCard: React.FC<Props> = ({ service, onSelect }) => {
       {/* Footer Actions */}
       <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <button
-            type="button"
+          <a
+            href={`/services/${service.id}`}
             onClick={(e) => {
+              e.preventDefault();
               e.stopPropagation();
               onSelect(service);
             }}
@@ -86,7 +87,7 @@ export const ServiceCard: React.FC<Props> = ({ service, onSelect }) => {
           >
             <span>View Details</span>
             <ChevronRight className="w-3.5 h-3.5" />
-          </button>
+          </a>
 
           <button
             type="button"

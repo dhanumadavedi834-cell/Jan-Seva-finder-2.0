@@ -126,7 +126,7 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-10">
       {/* Breadcrumbs */}
       <Breadcrumbs
-        items={[{ label: 'Directory', path: '#/services' }, { label: 'Scholarships & Student Portals' }]}
+        items={[{ label: 'Directory', path: '/services' }, { label: 'Government Scholarships' }]}
         onNavigate={onNavigate}
       />
 
@@ -138,20 +138,24 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({
             <span>Higher Education & National Financial Grants</span>
           </div>
           <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-            Scholarships & Student Resources
+            Government Scholarships & Student Portals
           </h1>
           <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-3xl leading-relaxed">
             Verified scholarships, DBT educational grants, and higher education portals for students across India. Public information for Academic Year 2026–27.
           </p>
         </div>
 
-        <button
-          onClick={() => onNavigate('#/internships')}
+        <a
+          href="/internships"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate && onNavigate('/internships');
+          }}
           className="inline-flex items-center gap-1.5 px-4 py-2 bg-purple-50 dark:bg-purple-950/50 hover:bg-purple-100 dark:hover:bg-purple-900/50 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 rounded-xl text-xs font-semibold transition-colors self-start sm:self-auto"
         >
           <Rocket className="w-3.5 h-3.5" />
           <span>Explore Government Internships →</span>
-        </button>
+        </a>
       </div>
 
       {/* Spotlight: NSP AY 2026-27 */}
